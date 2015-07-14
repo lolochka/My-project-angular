@@ -1,0 +1,22 @@
+{
+    "id":1436204530694,
+     "name":"Olga",
+     "surname":"Shkoda",
+     "title":"Manager",
+     "level":"Junior",
+     "department":"sales",
+     "manager":"Andrew Smith",
+     "month":"3",
+     "year":"1989",
+     "skills":["html","css","javascript"],
+     "ldUrl":"http://learn.javascript.ru/ifelse",
+     "bhUrl":"http://learn.javascript.ru/ifelse",
+     "otherUrl":"http://learn.javascript.ru/ifelse",
+     "skype":"ooshkoda",
+     "email":"good@mail.com",
+     "comments":[
+        {"text":"ddfaaf","username":"Me","date":"2015-07-08T18:39:34.625Z","empl":1436206235694},
+        {"text":"fffafaf","username":"Me","date":"2015-07-08T18:39:37.461Z","empl":1436206235694}
+    ],
+    "photoUrl": "https://media.licdn.com/mpr/mpr/shrink_100_100/p/4/005/028/37a/11638c8.jpg"
+}

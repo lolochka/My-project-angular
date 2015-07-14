@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" ng-app="crewApp">
+<head>
+  <meta charset="utf-8">
+  <title>Crew</title>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/responsive.css" rel="stylesheet" type="text/css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+
+</head>
+<body>
+<div class="footer-wrapper">
+    
+<!--Header begins-->
+    <header class="block-header">
+      <div class="block-header_block-content">
+        <div class="block-header_logo"></div>
+      </div>
+      <div class="wrapper"></div>
+    </header>
+<!--Header ends-->
+
+<!--Block employee description begins-->
+    <div class="description-overlay"></div>
+    <div class="block-content">
+      <div class="right-wrap">
+        <section class="block-emploee-description">
+          <div ng-view></div>
+        </section>
+      </div>
+<!--Block employee description ends-->
+
+<!--Block employees list begins-->
+      <section class="block-employees"  ng-controller="EmployeeListCtrl">
+
+    
+        <div class="block-header_add-employee"><a href="#add-employee">Add employee</a></div>
+        <h2 class="block-employees_title">Emloyees: {{employees.length}}</h2>
+        <nav class="block-employees_nav-departments">
+          <div class="block-employees-search"><input ng-model="query" placeholder="Search. Just start typing..." class="search-feald"></div>
+          <ul class="block-employees_nav-departments_list">
+            <li class="block-employees_nav-departments_list_department mobile" ng-click="myFilter = {'department': 'mobile'}">Mobile</li>
+            <li class="block-employees_nav-departments_list_department web" ng-click="myFilter = {'department': 'web'}">Web</li>
+            <li class="block-employees_nav-departments_list_department testing" ng-click="myFilter = {'department': 'testing'}">Testing</li>
+            <li class="block-employees_nav-departments_list_department sales" ng-click="myFilter = {'department': 'sales'}">Sales</li>
+            <li class="block-employees_nav-departments_list_department" ng-click="myFilter = {}">Show all</li>
+<!-- Не работает фильтр который сбрасывает все остальные фильтры -->
+          </ul>
+        </nav>
+<!--Employees list header ends --> 
+
+<!--Employees list begins-->
+        <ul class="block-employees_list" ng-show="employees">
+          <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" id="{{employee.id}}" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
+            <a class="block-employees_block-employee_link" href="#/employees/{{employee.id}}">
+              <div class="photo-block">
+              <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto"></div>
+              <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee.id}}</h3>
+              <p class="block-employees_block-employee_title">{{employee.title}}</p>
+              <ul class="block-employees_block-employee_block-tags">
+                <li class="block-employees_block-employee_block-tags_tag" ng-repeat="skill in employee.skills">{{skill}}</li>
+              </ul>
+            </a>
+          </li>
+        </ul>
+       
+      </section>   
+      
+<!--Block employees list ends-->
+    </div>
+  </div> 
+
+<!--FORM BEGINS-->
+  <a href="#x" class="overlay" id="add-employee"></a>
+  <section class="block-create-employee">
+    <a href="#close" class="heading-create-employee_close"></a>
+    <h1 class="heading-create-employee">New employee</h1>
+    
+    <form id="create-emloyee-form" name="create-employee" action="#" method="get" class="create-emloyee-form">
+      <ul class="create-emloyee-form_list">
+            
+        <li class="create-emloyee-form_list-field">
+          <input type="text" name='empl-name' placeholder="Name" required pattern="^[A-Za-z]{2,}">
+          <input type="text" name='empl-surname' placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
+        </li>
+            
+        <li class="create-emloyee-form_list-field">
+          <input type="text" name='empl-title' placeholder="Job position" required>
+          <select name='empl-level' id="level">
+            <option value>Choose level</option>
+            <option value="Junior">Junior</option>
+            <option value="Middle">Middle</option>
+            <option value="Senior">Senior</option>
+          </select>
+        </li>
+
+        <li class="create-emloyee-form_list-field">
+          <select name="empl-department" id="department" required>
+            <option value class="null-value">Choose department</option>
+            <option value="mobile">Mobile</option>
+            <option value="sales">Sales</option>
+            <option value="web">Web</option>
+            <option value="testing">Testing</option>
+          </select>
+          <input type="text" name="empl-manager" placeholder="Name Surname">
+        </li>
+
+        <li class="create-emloyee-form_list-field">
+          <span class="input-label">Career start</span> 
+          <select name="empl-month-career-start">
+            <option value>Choose month</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">Septmber</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+          <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d">
+        </li>
+            
+        <li class="create-emloyee-form_list-field">
+          <span class="input-label">Primary skills</span>
+          <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required>
+        </li>
+
+        <li class="create-emloyee-form_list-field">
+          <span class="input-label">Add employee photo URL</span>
+          <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin">
+        </li>
+            
+        <li  class="create-emloyee-form_list-field">
+          <p class="input-label">Employee links</p>
+          <ul class="create-emloyee-form_list-links">  
+            <li class="create-emloyee-form_list-links_link">
+              <input type="url" name="empl-linkedin-page" placeholder="Linkedin page url" class="link-linkedin">
+            </li>
+            <li class="create-emloyee-form_list-links_link">
+              <input type="url" name="empl-behance-page" placeholder="Behance page url" class="link-behance">
+            </li>
+            <li class="create-emloyee-form_list-links_link">
+              <input type="url" name="empl-web-page" placeholder="Other sites" class="link-link">
+            </li>
+          </ul>
+        </li>
+            
+        <li  class="create-emloyee-form_list-field">
+          <p class="input-label contact-info">Contact information</p>
+          <input name="empl-skype" type="text" placeholder="Skype" required>
+          <input name="empl-email" type="email" placeholder="E-mail">
+        </li>         
+         
+      </ul>
+      
+      <div class="block-create-employee-success-msg">Success! You have just added new employee!;)</div>
+      
+      <div class="block_buton-create-employee"><button type="submit" id="buton-create-employee" class="buton-create-employee">Submit</button></div>
+    </form>
+  </section>
+<!--FORM ENDS-->
+<pre>{{employees | filter:query | filter:myFilter | json}}</pre>
+
+  
+<!--Footer begins-->
+  <div  class="block-footer">
+    <ul class="block-footer_list-links">
+      <li class="block-footer_list-links_link"><a href="#">About</a></li>
+      <li class="block-footer_list-links_link"><a href="#">FAQ</a></li>
+      <li class="block-footer_list-links_link"><a href="#">Contact us</a></li>
+    </ul>   
+  </div>
+<!--Footer ends-->
+</body>
+</html>

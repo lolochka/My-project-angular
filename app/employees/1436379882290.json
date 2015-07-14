@@ -1,0 +1,19 @@
+{
+    "id":1436379882290,
+    "name":"Alex",
+    "surname":"Serui",
+    "title":"iOS developer",
+    "level":"Middle",
+    "department":"mobile",
+    "manager":"",
+    "month":"1",
+    "year":"2010",
+    "skills":["iOS","cocoa touch"],
+    "ldUrl":"",
+    "bhUrl":"",
+    "otherUrl":"",
+    "skype":"alex",
+    "email":"",
+    "comments":[],
+    "photoUrl": ""
+}
