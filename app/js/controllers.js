@@ -93,6 +93,15 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
 
   $scope.deleteEmployee = function(param) {
     Cache.removeItem(param);
+    var arr = $scope.employees;
+    if (arr != undefined) {
+      for ( var i = 0; i < arr.length; i++ ) {
+        if ( arr[i].employeeId = param) {
+          arr.splice(i, 1);
+          return arr[i];
+        }
+      }
+    }
   };
 
 }]);

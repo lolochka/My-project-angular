@@ -121,12 +121,12 @@
 
 <!--Employees list begins-->
   <ul class="block-employees_list" ng-show="employees">
-    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" id="{{employee.employeeId}}" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
+    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee.employeeId}}">
         <div class="photo-block">
           <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">
         </div>
-        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee.employeeId}}</h3>
+        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}}</h3>
         <p class="block-employees_block-employee_title">{{employee.title}}</p>
         <ul class="block-employees_block-employee_block-tags">
           <li class="block-employees_block-employee_block-tags_tag" ng-repeat="skill in employee.skills">{{skill}}</li>
