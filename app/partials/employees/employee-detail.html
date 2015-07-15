@@ -1,8 +1,7 @@
 {{routeParams}}
 <header class="block-emploee-description_header">
 	<div class="block-emploee-description_header_close" ng-click="hideDescriptBlock()"></div>
-	<div class="block-header_edit-employee" >
-		<a ng-click="deleteEmployee(routeParams)" href="#">Delete</a>
+	<div class="block-header_edit-employee" ng-click="deleteEmployee(thisEmployee.employeeId)">
 	</div>
 	<h2 class="block-emploee-description_title">
 		{{thisEmployee.level}} {{thisEmployee.title}}</h2>
