@@ -18,13 +18,13 @@
     <ul class="create-emloyee-form_list">
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-name' placeholder="Name" required pattern="^[A-Za-z]{2,}">
-        <input type="text" name='empl-surname' placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
+        <input type="text" name='empl-name' ng-model="newEmployee.name" placeholder="Name" required pattern="^[A-Za-z]{2,}">
+        <input type="text" name='empl-surname' ng-model="newEmployee.surname" placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
       </li>
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-title' placeholder="Job position" required>
-        <select name='empl-level' id="level">
+        <input type="text" name='empl-title' placeholder="Job position" required ng-model="newEmployee.title">
+        <select name='empl-level' id="level" ng-model="newEmployee.level">
           <option value>Choose level</option>
           <option value="Junior">Junior</option>
           <option value="Middle">Middle</option>
@@ -33,19 +33,19 @@
       </li>
 
       <li class="create-emloyee-form_list-field">
-        <select name="empl-department" id="department" required>
+        <select name="empl-department" id="department" ng-model="newEmployee.department" required>
           <option value class="null-value">Choose department</option>
           <option value="mobile">Mobile</option>
           <option value="sales">Sales</option>
           <option value="web">Web</option>
           <option value="testing">Testing</option>
         </select>
-        <input type="text" name="empl-manager" placeholder="Name Surname">
+        <input type="text" name="empl-manager" placeholder="Name Surname" ng-model="newEmployee.manager">
       </li>
 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Career start</span> 
-        <select name="empl-month-career-start">
+        <select name="empl-month-career-start" ng-model="newEmployee.month">
           <option value>Choose month</option>
           <option value="0">January</option>
           <option value="1">February</option>
@@ -60,37 +60,37 @@
           <option value="10">November</option>
           <option value="11">December</option>
         </select>
-        <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d">
+        <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d" ng-model="newEmployee.year">
       </li>
                 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Primary skills</span>
-        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required>
+        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required ng-model="newEmployee.skills">
       </li>
 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Add employee photo URL</span>
-        <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin">
+        <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin" ng-model="newEmployee.photoUrl">
       </li>
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label">Employee links</p>
         <ul class="create-emloyee-form_list-links">  
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-linkedin-page" placeholder="Linkedin page url" class="link-linkedin">
+            <input type="url" name="empl-linkedin-page" placeholder="Linkedin page url" class="link-linkedin" ng-model="newEmployee.ldUrl">
           </li>
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-behance-page" placeholder="Behance page url" class="link-behance">
+            <input type="url" name="empl-behance-page" placeholder="Behance page url" class="link-behance" ng-model="newEmployee.bhUrl">
           </li>
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-web-page" placeholder="Other sites" class="link-link">
+            <input type="url" name="empl-web-page" placeholder="Other sites" class="link-link" ng-model="newEmployee.otherUrl">
           </li>
         </ul>
       </li>
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label contact-info">Contact information</p>
-        <input name="empl-skype" type="text" placeholder="Skype" required>
+        <input name="empl-skype" type="text" placeholder="Skype" required ng-model="">
         <input name="empl-email" type="email" placeholder="E-mail">
       </li>         
              
