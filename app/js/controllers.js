@@ -104,6 +104,34 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     }
   };
 
+  var date = new Date();
+  $scope.newEmployee = {
+    "id": date.getTime(),
+    "name":"",
+     "surname":"",
+     "title":"",
+     "level":"",
+     "department":"",
+     "manager":"",
+     "month":"",
+     "year":"",
+     "skills":[],
+     "ldUrl":"",
+     "bhUrl":"",
+     "otherUrl":"",
+     "skype":"",
+     "email":"",
+     "comments":[
+        {
+          "text":"",
+          "username":"",
+          "date": date ,
+          "empl":date.getTime()
+        }
+    ],
+    "photoUrl": ""
+  };
+
 }]);
 
 
