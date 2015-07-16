@@ -12,13 +12,13 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     "web", "mobile", "testing", "sales"
   ];
 
-  $scope.$routeParams = $routeParams.employeeId;
+  $scope.routeParams = $routeParams.employeeId;
 
   $scope.getEmployee = function(param) {
     var arr = $scope.employees;
     if (arr != undefined) {
       for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i].employeeId = param) {
+        if ( arr[i].id = param) {
         console.log(arr[i]);
         return arr[i];
         }
@@ -35,9 +35,9 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
   };
 
   console.log($scope.$routeSegment);
-  console.log($scope.$routeParams);
+  console.log($scope.routeParams);
 
-  $scope.thisEmployee = $scope.getEmployee($scope.$routeParams);
+  $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
 
 
   $scope.getPhoto = function(obj) {

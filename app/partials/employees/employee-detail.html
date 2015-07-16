@@ -1,7 +1,7 @@
 {{routeParams}}
 <header class="block-emploee-description_header">
 	<div class="block-emploee-description_header_close" ng-click="hideDescriptBlock()"></div>
-	<div class="block-header_edit-employee" ng-click="deleteEmployee(thisEmployee.employeeId)">
+	<div class="block-header_edit-employee" ng-click="deleteEmployee(routeParams)">
 	</div>
 	<h2 class="block-emploee-description_title">
 		{{thisEmployee.level}} {{thisEmployee.title}}</h2>
@@ -23,7 +23,7 @@
 		<div class="photo-block">
 			<img ng-src="{{getPhoto(thisEmployee)}}" alt="{{thisEmployee.name}} {{thisEmployee.surname}} photo" width="59">
 		</div>
-		<h3 class="block-emploee-description_block-name_name">{{thisEmployee.name}} {{thisEmployee.surname}}</h3>
+		<h3 class="block-emploee-description_block-name_name">{{thisEmployee.name}} {{thisEmployee.surname}} {{thisEmployee.id}}</h3>
 		<div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>
 	</div>
 	<div class="block-emploee-description_description">
