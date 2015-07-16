@@ -1,10 +1,9 @@
 {
-  "name": "angular-phonecat",
-  "description": "A starter project for AngularJS",
+  "name": "crew",
+  "description": "Crew application",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-phonecat",
-  "license": "MIT",
-  "private": true,
+  "homepage": "https://github.com/lolochka/My-project-angular/",
+  "private": false,
   "dependencies": {
     "angular": "1.4.x",
     "angular-mocks": "1.4.x",
