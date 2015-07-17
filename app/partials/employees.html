@@ -14,7 +14,7 @@
   <div class="heading-create-employee_close" ng-click="showme=false"></div>
   <h1 class="heading-create-employee">New employee</h1>
         
-  <form id="create-emloyee-form" name="create-employee" action="#" method="get" class="create-emloyee-form">
+  <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" ng-submit="addEmployee()">
     <ul class="create-emloyee-form_list">
                 
       <li class="create-emloyee-form_list-field">
@@ -90,13 +90,14 @@
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label contact-info">Contact information</p>
-        <input name="empl-skype" type="text" placeholder="Skype" required ng-model="">
-        <input name="empl-email" type="email" placeholder="E-mail">
+        <input name="empl-skype" type="text" placeholder="Skype" required ng-model="newEmployee.skype">
+        <input name="empl-email" type="email" placeholder="E-mail" ng-model="newEmployee.email">
       </li>         
              
     </ul>
           
     <div class="block-create-employee-success-msg">Success! You have just added new employee!;)</div>
+    <div>{{newEmployee}}</div>
           
     <div class="block_buton-create-employee"><button type="submit" id="buton-create-employee" class="buton-create-employee">Submit</button></div>
   </form>
@@ -121,8 +122,8 @@
 
 <!--Employees list begins-->
   <ul class="block-employees_list" ng-show="employees">
-    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
-      <a class="block-employees_block-employee_link" href="#/employees/{{employee.id}}">
+    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" ng-class="{active: isActive(datalist)}">
+      <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
           <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">
         </div>
