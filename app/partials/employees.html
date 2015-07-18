@@ -14,7 +14,7 @@
   <div class="heading-create-employee_close" ng-click="showme=false"></div>
   <h1 class="heading-create-employee">New employee</h1>
         
-  <form id="create-emloyee-form" name="create-employee" action="#" method="get" class="create-emloyee-form">
+  <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" ng-submit="addEmployee()">
     <ul class="create-emloyee-form_list">
                 
       <li class="create-emloyee-form_list-field">
@@ -114,7 +114,6 @@
       <li class="block-employees_nav-departments_list_department testing" ng-click="myFilter = {'department' : 'testing'}">Testing</li>
       <li class="block-employees_nav-departments_list_department sales" ng-click="myFilter = {'department': 'sales'}">Sales</li>
       <li class="block-employees_nav-departments_list_department" ng-click="myFilter = {}">Show all</li>
-<!-- Не работает фильтр который сбрасывает все остальные фильтры -->
     </ul>
   </nav>
 <!--Employees list header ends --> 
@@ -122,11 +121,11 @@
 <!--Employees list begins-->
   <ul class="block-employees_list" ng-show="employees">
     <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
-      <a class="block-employees_block-employee_link" href="#/employees/{{employee.id}}">
+      <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
           <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">
         </div>
-        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee.id}}</h3>
+        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee._id}}</h3>
         <p class="block-employees_block-employee_title">{{employee.title}}</p>
         <ul class="block-employees_block-employee_block-tags">
           <li class="block-employees_block-employee_block-tags_tag" ng-repeat="skill in employee.skills">{{skill}}</li>

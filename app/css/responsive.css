@@ -1,15 +1,19 @@
 @media only screen and (max-width: 800px) {
    
    
-   .block-header_logo {
-      width: 150px;
-      height: 29px;
-      background: url(images/logo-mobile.png) no-repeat;
-      float: left;
-      margin-top: 10px;
-      margin-bottom: 10px;
-   }
+  .block-header_logo {
+    width: 150px;
+    height: 29px;
+    background: url(images/logo-mobile.png) no-repeat;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
    
+  .block-header_list-links_link {
+    margin-top: 0px;
+  }
+  
    .block-content {
    margin: 0px auto;
    }
@@ -110,4 +114,23 @@
       padding-top: 0;
       padding-bottom: 0;
    }
+  
+  .block-about_block-icon {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .block-about_block-icons {
+  margin: 0px auto 10px;
+}
+  .block-about_main-content_contacts {
+    width: 100%;
+  }
+  
+  .contact-us_title {
+    margin-bottom: 10px;
+  }
+  .contact-us.phone {
+    margin-top: 10px;
+  }
 }

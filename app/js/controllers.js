@@ -5,6 +5,7 @@
 var crewControllers = angular.module('crewControllers', []);
 
 crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
+  $scope.employees = [];
   $scope.employees = Cache.getItems();
   $scope.$routeSegment = $routeSegment;
 
@@ -16,6 +17,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
 
   $scope.getEmployee = function(param) {
     var arr = $scope.employees;
+    console.log(param);
     if (arr != undefined) {
       for ( var i = 0; i < arr.length; i++ ) {
         if ( arr[i]._id == param) {
@@ -159,22 +161,23 @@ crewControllers.controller('AboutCtrl', ['$scope', function($scope) {
 
 
 crewControllers.controller('FaqCtrl', ['$scope', function($scope) {
-  $scope.about = [
+  $scope.faqs = [
   {
-    'question' : 'blablabka',
-    'answer' : 'Lolooooodlllld'
+    'question' : 'Is the app completely free or are there premium features?',
+    'answer' : 'At some point of my career I’ve had to work a lot with resumes and employee accounts. That process lacked automation and was terribly organized so I came up with an idea fit for flawless automation you are now using. All was done out of pure passion and the desire to help other people who walked in my shoes thus the app hides no fees and is 100% free to use.',
   },
   {
-    'question' : 'blablabka',
-    'answer' : 'Lolooooodlllld'
+    'question' : 'Does the app have support?',
+    'answer' : 'I’m constantly working on new functionality and fixes of existing defects so yes, there will be newer versions released soon.'
   },
   {
-    'question' : 'blablabka',
-    'answer' : 'Lolooooodlllld'
+    'question' : 'Is there a possibility to edit employee profiles?',
+    'answer' : 'I’m currently working on this particular piece of functionality so this option will be available shortly in newer versions.'
   },
   {
-    'question' : 'blablabka',
-    'answer' : 'Lolooooodlllld'
+    'question' : 'How often are updates being released?',
+    'answer' : 'Considering _app name_ is free and I wish to remain things that way and noting I am the only one creating all functionality frequent updates are not something that may be promised. However I do invest all my free time in _app name_ and I’m doing my best to ensure finest quality of the product so updates may not be too often but each of them will be of great value.'
   }
   ]
+  
 }]);
