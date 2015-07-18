@@ -18,7 +18,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     var arr = $scope.employees;
     if (arr != undefined) {
       for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i].id = param) {
+        if ( arr[i]._id == param) {
         console.log(arr[i]);
         return arr[i];
         }
@@ -41,7 +41,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
 
 
   $scope.getPhoto = function(obj) {
-    if (obj.photoUrl != 0) {
+    if (obj.photoUrl != 0 && obj.photoUrl != undefined) {
       return obj.photoUrl;
     } else {
       return 'img/user.png';
@@ -49,7 +49,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
   };
 
   $scope.getExperience = function(obj) {
-    if (obj.year != 0 || obj.month != 0 ) {
+    if (obj.year != undefined, obj.month != undefined, obj.year != 0 || obj.month != 0 ) {
       var month = obj.month;
       var year = obj.year;
       var date = new Date();
@@ -96,7 +96,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     var arr = $scope.employees;
     if (arr != undefined) {
       for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i].employeeId = param) {
+        if ( arr[i]._id == param) {
           arr.splice(i, 1);
           return arr[i];
         }
@@ -105,32 +105,44 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
   };
 
   var date = new Date();
-  $scope.newEmployee = {
-    "id": date.getTime(),
-    "name":"",
-     "surname":"",
-     "title":"",
-     "level":"",
-     "department":"",
-     "manager":"",
-     "month":"",
-     "year":"",
-     "skills":[],
-     "ldUrl":"",
-     "bhUrl":"",
-     "otherUrl":"",
-     "skype":"",
-     "email":"",
-     "comments":[
-        {
-          "text":"",
-          "username":"",
-          "date": date ,
-          "empl":date.getTime()
-        }
-    ],
-    "photoUrl": ""
-  };
+  $scope.newEmployee = {};
+  //   "id": date.getTime(),
+  //   "name":"",
+  //    "surname":"",
+  //    "title":"",
+  //    "level":"",
+  //    "department":"",
+  //    "manager":"",
+  //    "month":"",
+  //    "year":"",
+  //    "skills":[],
+  //    "ldUrl":"",
+  //    "bhUrl":"",
+  //    "otherUrl":"",
+  //    "skype":"",
+  //    "email":"",
+  //    "comments":[
+  //       {
+  //         "text":"",
+  //         "username":"",
+  //         "date": date ,
+  //         "empl":date.getTime()
+  //       }
+  //   ],
+  //   "photoUrl": ""
+  // };
+
+  $scope.addEmployee = function () {
+    var date = new Date();
+    $scope.newEmployee._id = date.getTime();
+    $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
+    $scope.newEmployee.comments = [];
+    Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
+    $scope.employees.push($scope.newEmployee);
+    $scope.newEmployee = {};
+    $scope.showme = false;
+    return false;
+  }
 
 }]);
 
