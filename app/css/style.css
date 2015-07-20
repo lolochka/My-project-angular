@@ -494,7 +494,7 @@ a:visited {
   transition: color 0.2s;
 }
 
-.block-employees_block-employee_link:hover, .block-employees_block-employee_link:active {
+.block-employees_block-employee_link:hover, .block-employees_block-employee_link:active, .block-employees_block-employee_link:focus, .active .block-employees_block-employee_link, .block-employees_block-employee_link:active:visited {
   color: #fff;
 }
 
@@ -764,7 +764,7 @@ button[id="buton-create-employee"], .buton-contact-us {
    transition: background-color 0.3s, color 0.3s;
 }
 
-button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:active, button[id="buton-create-employee"]:focus, .buton-contact-us:hover, .buton-contact-us:active, .buton-contact-us:focused {
+button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:active, button[id="buton-create-employee"]:focus, .buton-contact-us:hover, .buton-contact-us:active, .buton-contact-us:focus {
    color: #c0c0c0;
    background-color: #4c0f6e;
 }

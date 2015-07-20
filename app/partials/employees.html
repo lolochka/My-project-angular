@@ -120,7 +120,7 @@
 
 <!--Employees list begins-->
   <ul class="block-employees_list" ng-show="employees">
-    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter" ng-click="select(datalist)" ng-class="{active: isActive(datalist)}">
+    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}" >
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
           <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">

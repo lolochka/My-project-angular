@@ -106,34 +106,8 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     }
   };
 
-  var date = new Date();
   $scope.newEmployee = {};
-  //   "id": date.getTime(),
-  //   "name":"",
-  //    "surname":"",
-  //    "title":"",
-  //    "level":"",
-  //    "department":"",
-  //    "manager":"",
-  //    "month":"",
-  //    "year":"",
-  //    "skills":[],
-  //    "ldUrl":"",
-  //    "bhUrl":"",
-  //    "otherUrl":"",
-  //    "skype":"",
-  //    "email":"",
-  //    "comments":[
-  //       {
-  //         "text":"",
-  //         "username":"",
-  //         "date": date ,
-  //         "empl":date.getTime()
-  //       }
-  //   ],
-  //   "photoUrl": ""
-  // };
-
+  
   $scope.addEmployee = function () {
     var date = new Date();
     $scope.newEmployee._id = date.getTime();
@@ -146,9 +120,33 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     return false;
   }
 
+
+  $scope.newComment = {};
+
+  $scope.addComment = function(obj) {
+    if ($scope.newComment.text) {
+      var date = new Date();
+      $scope.newComment.date = date;
+      $scope.newComment.username = 'User';
+      $scope.newComment._id = date.getTime();
+      var newComment = $scope.newComment;
+      obj.comments.push(newComment);
+      Cache.cacheItem(obj._id, obj);
+      $scope.newComment = {};
+      return obj;
+    }
+  }
+
+  $scope.removeComment = function (comment) {
+    for (var i = 0, ii = $scope.thisEmployee.comments.length; i < ii; i++) {
+      if (comment === $scope.thisEmployee.comments[i]) {
+        $scope.thisEmployee.comments.splice(i, 1);
+      };
+    }
+    Cache.cacheItem($scope.thisEmployee._id, $scope.thisEmployee);
+  };
+
 }]);
-
-
 
 crewControllers.controller('AboutCtrl', ['$scope', function($scope) {
   $scope.about = {
