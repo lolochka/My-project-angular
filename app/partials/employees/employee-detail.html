@@ -3,6 +3,8 @@
 	<div class="block-emploee-description_header_close" ng-click="hideDescriptBlock()"></div>
 	<div class="block-header_edit-employee" ng-click="deleteEmployee(routeParams)">Delete
 	</div>
+	<div class="block-header_edit-employee" ng-click="editEmployee()">Edit
+	</div>
 	<h2 class="block-emploee-description_title">
 		{{thisEmployee.level}} {{thisEmployee.title}}</h2>
 	<div class="wrapper"></div>
@@ -67,7 +69,7 @@
   	<div class="block-emploee-description_block-comments_form" id="comment-form">
   		<textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here" ng-model="newComment.text"></textarea>
   		<div class="block-emploee-description_block-comments_form_button-block">
-  			<button class="block-emploee-description_block-comments_form_button" id="send-comment" ng-click="addComment(thisEmployee)">Submit</button>
+  			<button class="block-emploee-description_block-comments_form_button" ng-click="addComment(thisEmployee)">Submit</button>
   		</div>
   		{{newComment}}
   	</div>

@@ -12,21 +12,25 @@ crewServices.factory('Cache', ['$resource', function() {
 	};
 
 	cache_service.getItem = function(key){
-    return JSON.parse(localStorage[key]);
+		if (key != undefined) {
+    	return JSON.parse(localStorage[key]);
+  	} else {
+  		return 0;
+  	}
   };
 
   cache_service.getItems = function(){
+  	var arr = [];
   	if (localStorage.length > 0) {
-	  	var arr = [];
 	  	for (var i = 0; i < localStorage.length; i++) {
 	      var key = localStorage.key(i);
 	      if (key.length == 13) {
 	        var item = JSON.parse(localStorage[key]);
 	        arr.push(item);
-	      	}
-	    	}
-	  	return arr;
+	      }
+	    }
 	  };
+	  return arr;
   };
 
   cache_service.itemExist = function(key){

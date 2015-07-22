@@ -1,6 +1,6 @@
 <div class="right-wrap">
   <section class="block-emploee-description">
-    <div app-view-segment="1"></div>
+    <div app-view-segment="1" class="employee-details"></div>
   </section>
 </div>
 <!--Block employee description ends-->
@@ -12,7 +12,7 @@
 <div class="overlay" ng-show="showme" ng-click="showme=false"></div>
 <section class="block-create-employee" ng-show="showme">
   <div class="heading-create-employee_close" ng-click="showme=false"></div>
-  <h1 class="heading-create-employee">New employee</h1>
+  <h1 class="heading-create-employee">Employee</h1>
         
   <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" ng-submit="addEmployee()">
     <ul class="create-emloyee-form_list">
@@ -40,7 +40,7 @@
           <option value="web">Web</option>
           <option value="testing">Testing</option>
         </select>
-        <input type="text" name="empl-manager" placeholder="Name Surname" ng-model="newEmployee.manager">
+        <input type="text" name="empl-manager" placeholder="Responsible manager" ng-model="newEmployee.manager">
       </li>
 
       <li class="create-emloyee-form_list-field">
@@ -95,9 +95,7 @@
       </li>         
              
     </ul>
-          
-    <div class="block-create-employee-success-msg">Success! You have just added new employee!;)</div>
-          
+                   
     <div class="block_buton-create-employee"><button type="submit" id="buton-create-employee" class="buton-create-employee">Submit</button></div>
   </form>
 </section>
@@ -120,7 +118,7 @@
 
 <!--Employees list begins-->
   <ul class="block-employees_list" ng-show="employees">
-    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}" >
+    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
           <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">

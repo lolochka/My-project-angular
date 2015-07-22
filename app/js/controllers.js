@@ -5,7 +5,6 @@
 var crewControllers = angular.module('crewControllers', []);
 
 crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
-  $scope.employees = [];
   $scope.employees = Cache.getItems();
   $scope.$routeSegment = $routeSegment;
 
@@ -15,32 +14,27 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
 
   $scope.routeParams = $routeParams.employeeId;
 
-  $scope.getEmployee = function(param) {
-    var arr = $scope.employees;
-    console.log(param);
-    if (arr != undefined) {
-      for ( var i = 0; i < arr.length; i++ ) {
-        if ( arr[i]._id == param) {
-        console.log(arr[i]);
-        return arr[i];
-        }
-      }
-    }
-  };
+  // $scope.getEmployee = function(param) {
+  //   var arr = $scope.employees;
+  //   console.log(param);
+  //   if (arr != undefined) {
+  //     for ( var i = 0; i < arr.length; i++ ) {
+  //       if ( arr[i]._id == param) {
+  //       console.log(arr[i]);
+  //       return arr[i];
+  //       }
+  //     }
+  //   }
+  // };
 
-  $scope.length = function(obj) {
-    if (obj != 0) {
-      return obj.length;
-    } else { 
-      return 0;
-    }
-  };
+
 
   console.log($scope.$routeSegment);
   console.log($scope.routeParams);
 
-  $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
+  // $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
 
+  $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
 
   $scope.getPhoto = function(obj) {
     if (obj.photoUrl != 0 && obj.photoUrl != undefined) {
@@ -109,15 +103,26 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
   $scope.newEmployee = {};
   
   $scope.addEmployee = function () {
-    var date = new Date();
-    $scope.newEmployee._id = date.getTime();
     $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
-    $scope.newEmployee.comments = [];
+    if ($scope.newEmployee._id == undefined) {
+      var date = new Date();
+      $scope.newEmployee._id = date.getTime();
+      $scope.newEmployee.comments = [];
+      $scope.employees.push($scope.newEmployee);
+    } else {
+      angular.copy($scope.newEmployee, $scope.thisEmployee);
+
+    }
     Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
-    $scope.employees.push($scope.newEmployee);
     $scope.newEmployee = {};
     $scope.showme = false;
     return false;
+  }
+
+  $scope.editEmployee = function () {
+    $scope.showme = true;
+    angular.copy($scope.thisEmployee, $scope.newEmployee);
+    $scope.newEmployee.skills = $scope.newEmployee.skills.join(', ');
   }
 
 

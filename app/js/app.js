@@ -1,7 +1,7 @@
 'use strict';
 
 /* App Module */
-var crewApp = angular.module('crewApp', ['ngRoute', 'crewControllers', 'crewServices', 'route-segment', 'view-segment']);
+var crewApp = angular.module('crewApp', ['ngRoute', 'crewControllers', 'crewServices', 'route-segment', 'view-segment', 'ngAnimate']);
 
 crewApp.config(['$routeSegmentProvider', '$routeProvider', 
   function($routeSegmentProvider, $routeProvider) {
