@@ -24,19 +24,20 @@ crewApp.config(['$routeSegmentProvider', '$routeProvider',
       .within()
         .segment('home', {
           default: true,
-          templateUrl: 'partials/employees/home.html'
+          templateUrl: 'partials/employees/home.html',
+          controller: 'EmployeeDataCtrl'
         })
 
         .segment('employeeDetail', {
           templateUrl: 'partials/employees/employee-detail.html',
-          dependencies:['employeeId']
+          dependencies:['employeeId'],
+          controller: 'EmployeeDataCtrl'
         })
 
         .up()
 
       .segment('about', {
         templateUrl: 'partials/about.html',
-        controller: 'AboutCtrl'
       })
 
       .within()

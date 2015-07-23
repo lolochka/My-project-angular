@@ -218,6 +218,7 @@ a:visited {
    overflow: hidden;
    text-overflow: ellipsis;
    line-height: 20px;
+   text-transform: capitalize;
 }
 
 .block-emploee-description_projects-list {
@@ -505,6 +506,7 @@ a:visited {
    height: 18px;
    overflow: hidden;
    text-overflow: ellipsis;
+   text-transform: capitalize;
 }
 
 .block-employees_block-employee_title {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="crewApp">
+<html lang="en" data-ng-app="crewApp">
 <head>
   <meta charset="utf-8">
   <title>Crew</title>
@@ -26,10 +26,10 @@
       <div class="block-header_block-content">
         <div class="block-header_logo"></div>
         <ul class="block-header_list-links">
-          <li class="block-header_list-links_link"><a ng-class="{active: ('contact' | routeSegmentStartsWith)}" href="#/contact">Contact us</a></li>
-          <li class="block-header_list-links_link"><a href="#/faq" ng-class="{active: ('faq' | routeSegmentStartsWith)}">FAQ</a></li>
-          <li class="block-header_list-links_link"><a href="#/about" ng-class="{active: ('about' | routeSegmentStartsWith)}">About</a></li>
-          <li class="block-header_list-links_link"><a href="#/employees" ng-class="{active: ('employees' | routeSegmentStartsWith)}">Home</a></li>
+          <li class="block-header_list-links_link"><a data-ng-class="{active: ('contact' | routeSegmentStartsWith)}" href="#/contact">Contact us</a></li>
+          <li class="block-header_list-links_link"><a href="#/faq" data-ng-class="{active: ('faq' | routeSegmentStartsWith)}">FAQ</a></li>
+          <li class="block-header_list-links_link"><a href="#/about" data-ng-class="{active: ('about' | routeSegmentStartsWith)}">About</a></li>
+          <li class="block-header_list-links_link"><a href="#/employees" data-ng-class="{active: ('employees' | routeSegmentStartsWith)}">Home</a></li>
         </ul> 
       </div>
       <div class="wrapper"></div>
@@ -38,7 +38,7 @@
 
 <!--Block employee description begins-->
     <div class="description-overlay"></div>
-    <div class="block-content" app-view-segment="0"></div>
+    <div class="block-content" data-app-view-segment="0"></div>
   </div> 
 
 

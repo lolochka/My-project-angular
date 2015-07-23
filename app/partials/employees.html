@@ -1,6 +1,6 @@
 <div class="right-wrap">
   <section class="block-emploee-description">
-    <div app-view-segment="1" class="employee-details"></div>
+    <div data-app-view-segment="1" class="employee-details"></div>
   </section>
 </div>
 <!--Block employee description ends-->
@@ -9,22 +9,22 @@
 <section class="block-employees">
 
 <!--FORM BEGINS-->
-<div class="overlay" ng-show="showme" ng-click="showme=false"></div>
-<section class="block-create-employee" ng-show="showme">
-  <div class="heading-create-employee_close" ng-click="showme=false"></div>
+<div class="overlay" data-ng-show="showme" data-ng-click="showme=false"></div>
+<section class="block-create-employee" data-ng-show="showme">
+  <div class="heading-create-employee_close" data-ng-click="showme=false"></div>
   <h1 class="heading-create-employee">Employee</h1>
         
-  <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" ng-submit="addEmployee()">
+  <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" data-ng-submit="addEmployee()">
     <ul class="create-emloyee-form_list">
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-name' ng-model="newEmployee.name" placeholder="Name" required pattern="^[A-Za-z]{2,}">
-        <input type="text" name='empl-surname' ng-model="newEmployee.surname" placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
+        <input type="text" name='empl-name' data-ng-model="newEmployee.name" placeholder="Name" required pattern="^[A-Za-z]{2,}">
+        <input type="text" name='empl-surname' data-ng-model="newEmployee.surname" placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
       </li>
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-title' placeholder="Job position" required ng-model="newEmployee.title">
-        <select name='empl-level' id="level" ng-model="newEmployee.level">
+        <input type="text" name='empl-title' placeholder="Job position" required data-ng-model="newEmployee.title">
+        <select name='empl-level' id="level" data-ng-model="newEmployee.level">
           <option value>Choose level</option>
           <option value="Junior">Junior</option>
           <option value="Middle">Middle</option>
@@ -33,19 +33,19 @@
       </li>
 
       <li class="create-emloyee-form_list-field">
-        <select name="empl-department" id="department" ng-model="newEmployee.department" required>
+        <select name="empl-department" id="department" data-ng-model="newEmployee.department" required>
           <option value class="null-value">Choose department</option>
           <option value="mobile">Mobile</option>
           <option value="sales">Sales</option>
           <option value="web">Web</option>
           <option value="testing">Testing</option>
         </select>
-        <input type="text" name="empl-manager" placeholder="Responsible manager" ng-model="newEmployee.manager">
+        <input type="text" name="empl-manager" placeholder="Responsible manager" data-ng-model="newEmployee.manager">
       </li>
 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Career start</span> 
-        <select name="empl-month-career-start" ng-model="newEmployee.month">
+        <select name="empl-month-career-start" data-ng-model="newEmployee.month">
           <option value>Choose month</option>
           <option value="0">January</option>
           <option value="1">February</option>
@@ -60,38 +60,38 @@
           <option value="10">November</option>
           <option value="11">December</option>
         </select>
-        <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d" ng-model="newEmployee.year">
+        <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d" data-ng-model="newEmployee.year">
       </li>
                 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Primary skills</span>
-        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required ng-model="newEmployee.skills">
+        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required data-ng-model="newEmployee.skills">
       </li>
 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Add employee photo URL</span>
-        <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin" ng-model="newEmployee.photoUrl">
+        <input name="photoUrl" type="url" placeholder="You can use photo Url from Linkedin" data-ng-model="newEmployee.photoUrl">
       </li>
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label">Employee links</p>
         <ul class="create-emloyee-form_list-links">  
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-linkedin-page" placeholder="Linkedin page url" class="link-linkedin" ng-model="newEmployee.ldUrl">
+            <input type="url" name="empl-linkedin-page" placeholder="Linkedin page url" class="link-linkedin" data-ng-model="newEmployee.ldUrl">
           </li>
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-behance-page" placeholder="Behance page url" class="link-behance" ng-model="newEmployee.bhUrl">
+            <input type="url" name="empl-behance-page" placeholder="Behance page url" class="link-behance" data-ng-model="newEmployee.bhUrl">
           </li>
           <li class="create-emloyee-form_list-links_link">
-            <input type="url" name="empl-web-page" placeholder="Other sites" class="link-link" ng-model="newEmployee.otherUrl">
+            <input type="url" name="empl-web-page" placeholder="Other sites" class="link-link" data-ng-model="newEmployee.otherUrl">
           </li>
         </ul>
       </li>
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label contact-info">Contact information</p>
-        <input name="empl-skype" type="text" placeholder="Skype" required ng-model="newEmployee.skype">
-        <input name="empl-email" type="email" placeholder="E-mail"  ng-model="newEmployee.email">
+        <input name="empl-skype" type="text" placeholder="Skype" required data-ng-model="newEmployee.skype">
+        <input name="empl-email" type="email" placeholder="E-mail"  data-ng-model="newEmployee.email">
       </li>         
              
     </ul>
@@ -100,33 +100,33 @@
   </form>
 </section>
     
-<button class="block-header_add-employee" ng-click="showme=true">Add employee</button>
+<button class="block-header_add-employee" data-ng-click="showme=true">Add employee</button>
   
 </div> 
   <h2 class="block-employees_title">Emloyees</h2>
   <nav class="block-employees_nav-departments">
-    <div class="block-employees-search"><input ng-model="query" placeholder="Search. Just start typing..." class="search-feald"></div>
+    <div class="block-employees-search"><input data-ng-model="query" placeholder="Search. Just start typing..." class="search-feald"></div>
     <ul class="block-employees_nav-departments_list">
-      <li class="block-employees_nav-departments_list_department mobile" ng-click="myFilter = {'department' : 'mobile'}">Mobile</li>
-      <li class="block-employees_nav-departments_list_department web" ng-click="myFilter = {'department' : 'web'}">Web</li>
-      <li class="block-employees_nav-departments_list_department testing" ng-click="myFilter = {'department' : 'testing'}">Testing</li>
-      <li class="block-employees_nav-departments_list_department sales" ng-click="myFilter = {'department': 'sales'}">Sales</li>
-      <li class="block-employees_nav-departments_list_department" ng-click="myFilter = {}">Show all</li>
+      <li class="block-employees_nav-departments_list_department mobile" data-ng-click="myFilter = {'department' : 'mobile'}">Mobile</li>
+      <li class="block-employees_nav-departments_list_department web" data-ng-click="myFilter = {'department' : 'web'}">Web</li>
+      <li class="block-employees_nav-departments_list_department testing" data-ng-click="myFilter = {'department' : 'testing'}">Testing</li>
+      <li class="block-employees_nav-departments_list_department sales" data-ng-click="myFilter = {'department': 'sales'}">Sales</li>
+      <li class="block-employees_nav-departments_list_department" data-ng-click="myFilter = {}">Show all</li>
     </ul>
   </nav>
 <!--Employees list header ends --> 
 
 <!--Employees list begins-->
-  <ul class="block-employees_list" ng-show="employees">
-    <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
+  <ul class="block-employees_list" data-ng-show="employees">
+    <li  class="block-employees_block-employee {{employee.department}}" data-ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  data-ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
-          <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
+          <img data-ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
         </div>
         <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee._id}}</h3>
         <p class="block-employees_block-employee_title">{{employee.level}} {{employee.title}}</p>
-        <ul class="block-employees_block-employee_block-tags">
-          <li class="block-employees_block-employee_block-tags_tag" ng-repeat="skill in employee.skills">{{skill}}</li>
+        <ul class="block-employees_block-employee_block-tags"> 
+          <li class="block-employees_block-employee_block-tags_tag" data-ng-repeat="skill in employee.skills">{{skill}}</li>
         </ul>
       </a>
     </li>

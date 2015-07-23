@@ -1,9 +1,9 @@
 {{thisEmployee.id}}
 <header class="block-emploee-description_header">
-	<div class="block-emploee-description_header_close" ng-click="hideDescriptBlock()"></div>
-	<div class="block-header_edit-employee" ng-click="deleteEmployee(routeParams)">Delete
+	<div class="block-emploee-description_header_close" data-ng-click="hideDescriptBlock()"></div>
+	<div class="block-header_edit-employee" data-ng-click="deleteEmployee(routeParams)">Delete
 	</div>
-	<div class="block-header_edit-employee" ng-click="editEmployee()">Edit
+	<div class="block-header_edit-employee" data-ng-click="editEmployee(thisEmployee)">Edit
 	</div>
 	<h2 class="block-emploee-description_title">
 		{{thisEmployee.level}} {{thisEmployee.title}}</h2>
@@ -18,33 +18,33 @@
 		<h3 class="block-emploee-description_block-main-description_block-contacts_heading">Contact information</h3>
 		<div class="block-emploee-description_block-main-description_block-contacts_skype">
 			<span class="flaticon-skype12"></span>{{thisEmployee.skype}}</div>
-		<div class="block-emploee-description_block-main-description_block-contacts_email" ng-show="thisEmployee.email">
+		<div class="block-emploee-description_block-main-description_block-contacts_email" data-ng-show="thisEmployee.email">
 			<span class="flaticon-send4"></span><a href="mailto:{{thisEmployee.email}}" title="{{thisEmployee.email}}">{{thisEmployee.email}}</a>
 		</div>
 		</aside>
 		<div class="photo-block">
-			<img ng-src="{{getPhoto(thisEmployee)}}" alt="{{thisEmployee.name}} {{thisEmployee.surname}} photo" width="59">
+			<img data-ng-src="{{getPhoto(thisEmployee)}}" alt="{{thisEmployee.name}} {{thisEmployee.surname}} photo" width="59">
 		</div>
 		<h3 class="block-emploee-description_block-name_name">{{thisEmployee.name}} {{thisEmployee.surname}} {{thisEmployee.id}}</h3>
 		<div class="wrapper block-emploee-description_block-main-description_contacts_line"></div>
 	</div>
 	<div class="block-emploee-description_description">
 		<p class="block-emploee-description_list-description_department">Department: <span class="block-emploee-description_list-description_department-label">{{thisEmployee.department}}</span></p>
-		<p ng-show="thisEmployee.manager" class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">{{thisEmployee.manager}}</span></p>
-		<p ng-show="getExperience(thisEmployee)" class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">{{getExperience(thisEmployee)}}</span></p>
+		<p data-ng-show="thisEmployee.manager" class="block-emploee-description_block-main-description_manager">Manager: <span class="block-emploee-description_block-main-description_manager-label">{{thisEmployee.manager}}</span></p>
+		<p data-ng-show="getExperience(thisEmployee)" class="block-emploee-description_block-main-description_years">Years of experience: <span class="block-emploee-description_block-main-description_years-label">{{getExperience(thisEmployee)}}</span></p>
 		<p class="block-emploee-description_block-main-description_skills-label">Primary skills:</p>
 		<ul class="block-emploee-description_block-main-description_tags-list">
-			<li class="block-emploee-description_block-main-description_tags-list_tag" ng-repeat="skill in thisEmployee.skills">{{skill}}</li>
+			<li class="block-emploee-description_block-main-description_tags-list_tag" data-ng-repeat="skill in thisEmployee.skills">{{skill}}</li>
 		</ul>
-		<p class="block-emploee-description_block-main-description_links_label" ng-show="thisEmployee.ldUrl || thisEmployee.bhUrl || thisEmployee.otherUrl">Links:</p>
+		<p class="block-emploee-description_block-main-description_links_label" data-ng-show="thisEmployee.ldUrl || thisEmployee.bhUrl || thisEmployee.otherUrl">Links:</p>
 		<ul class="block-emploee-description_block-main-description_links-list">
-			<li class="block-emploee-description_block-main-description_links-list_link link-linkedin" ng-show="thisEmployee.ldUrl">
+			<li class="block-emploee-description_block-main-description_links-list_link link-linkedin" data-ng-show="thisEmployee.ldUrl">
 				<a href="{{thisEmployee.ldUrl}}" title="{{thisEmployee.ldUrl}}">{{thisEmployee.ldUrl}}</a>
 			</li>
-			<li class="block-emploee-description_block-main-description_links-list_link link-behance" ng-show="thisEmployee.bhUrl">
+			<li class="block-emploee-description_block-main-description_links-list_link link-behance" data-ng-show="thisEmployee.bhUrl">
 				<a href="{{thisEmployee.bhUrl}}" title="{{thisEmployee.bhUrl}}">{{thisEmployee.bhUrl}}</a>
 			</li>
-			<li class="block-emploee-description_block-main-description_links-list_link link-link" ng-show="thisEmployee.otherUrl">
+			<li class="block-emploee-description_block-main-description_links-list_link link-link" data-ng-show="thisEmployee.otherUrl">
 				<a href="{{thisEmployee.otherUrl}}" title="{{thisEmployee.otherUrl}}">{{thisEmployee.otherUrl}}</a>
 			</li>
 		</ul>
@@ -55,8 +55,8 @@
   <div class="block-emploee-description_block-comments" id="comments-block">
   	<h4 class="block-emploee-description_block-comments_title">Comments ({{thisEmployee.comments.length}}):</h4>
   	<div id="all-comments">
-  		<div class="block-emploee-description_block-comments_comment" ng-repeat="comment in thisEmployee.comments track by comment._id">
-	  		<div class="block-emploee-description_block-comments_remove-comment" ng-click="removeComment(comment)">x</div>
+  		<div class="block-emploee-description_block-comments_comment" data-ng-repeat="comment in thisEmployee.comments track by comment._id">
+	  		<div class="block-emploee-description_block-comments_remove-comment" data-ng-click="removeComment(comment)">x</div>
 	  		<p class="block-emploee-description_block-comments_author">{{comment.username}}</p>
 	  		<p class="block-emploee-description_block-comments_comment-time">
 	  			<time datetime="{{comment.date}}">{{comment.date | date:'yyyy-MM-dd HH:mm'}}</time>
@@ -67,9 +67,9 @@
 
 <!-- Comments -->
   	<div class="block-emploee-description_block-comments_form" id="comment-form">
-  		<textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here" ng-model="newComment.text"></textarea>
+  		<textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here" data-ng-model="newComment.text"></textarea>
   		<div class="block-emploee-description_block-comments_form_button-block">
-  			<button class="block-emploee-description_block-comments_form_button" ng-click="addComment(thisEmployee)">Submit</button>
+  			<button class="block-emploee-description_block-comments_form_button" data-ng-click="addComment(thisEmployee)">Submit</button>
   		</div>
   		{{newComment}}
   	</div>

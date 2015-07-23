@@ -4,24 +4,9 @@
 
 var crewControllers = angular.module('crewControllers', []);
 
-crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
+crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', function($scope, Cache ) {
   $scope.employees = Cache.getItems();
-  $scope.$routeSegment = $routeSegment;
-
-  $scope.departments = [
-    "web", "mobile", "testing", "sales"
-  ];
-
-  $scope.routeParams = $routeParams.employeeId;
-
   
-  console.log($scope.$routeSegment);
-  console.log($scope.routeParams);
-
-  // $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
-
-  $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
-
   $scope.getPhoto = function(obj) {
     if (obj.photoUrl != 0 && obj.photoUrl != undefined) {
       return obj.photoUrl;
@@ -90,6 +75,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
   
   $scope.addEmployee = function () {
     $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
+    console.log($scope.newEmployee);
     if ($scope.newEmployee._id == undefined) {
       var date = new Date();
       $scope.newEmployee._id = date.getTime();
@@ -109,47 +95,43 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
     return false;
   }
 
-  $scope.editEmployee = function () {
+  $scope.editEmployee = function (obj) {
     $scope.showme = true;
-    angular.copy($scope.thisEmployee, $scope.newEmployee);
+    angular.copy(obj, $scope.newEmployee);
     $scope.newEmployee.skills = $scope.newEmployee.skills.join(', ');
   }
 
+}])
 
-  $scope.newComment = {};
+  .controller('EmployeeDataCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
+    $scope.routeParams = $routeParams.employeeId;
+    console.log($scope.routeParams);
+    // $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
+    $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
 
-  $scope.addComment = function(obj) {
-    if ($scope.newComment.text) {
-      var date = new Date();
-      $scope.newComment.date = date;
-      $scope.newComment.username = 'User';
-      $scope.newComment._id = date.getTime();
-      var newComment = $scope.newComment;
-      obj.comments.push(newComment);
-      Cache.cacheItem(obj._id, obj);
-      $scope.newComment = {};
-      return obj;
+    $scope.newComment = {};
+    $scope.addComment = function(obj) {
+      if ($scope.newComment.text) {
+        var date = new Date();
+        $scope.newComment.date = date;
+        $scope.newComment.username = 'User';
+        $scope.newComment._id = date.getTime();
+        var newComment = $scope.newComment;
+        obj.comments.push(newComment);
+        Cache.cacheItem(obj._id, obj);
+        $scope.newComment = {};
+        return obj;
+      }
     }
-  }
-
-  $scope.removeComment = function (comment) {
-    for (var i = 0, ii = $scope.thisEmployee.comments.length; i < ii; i++) {
-      if (comment === $scope.thisEmployee.comments[i]) {
-        $scope.thisEmployee.comments.splice(i, 1);
-      };
-    }
-    Cache.cacheItem($scope.thisEmployee._id, $scope.thisEmployee);
-  };
-
-}]);
-
-crewControllers.controller('AboutCtrl', ['$scope', function($scope) {
-  $scope.about = {
-    'first' : 'blablabka',
-    'second' : 'Lolooooodlllld',
-    'third' : 'Hdlkjaflhflaffja'
-  }
-}]);
+    $scope.removeComment = function (comment) {
+      for (var i = 0, ii = $scope.thisEmployee.comments.length; i < ii; i++) {
+        if (comment === $scope.thisEmployee.comments[i]) {
+          $scope.thisEmployee.comments.splice(i, 1);
+        };
+      }
+      Cache.cacheItem($scope.thisEmployee._id, $scope.thisEmployee);
+    };
+  }]);
 
 
 crewControllers.controller('FaqCtrl', ['$scope', function($scope) {
