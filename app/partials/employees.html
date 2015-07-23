@@ -121,10 +121,10 @@
     <li  class="block-employees_block-employee {{employee.department}}" ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
-          <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} foto">
+          <img ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
         </div>
         <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee._id}}</h3>
-        <p class="block-employees_block-employee_title">{{employee.title}}</p>
+        <p class="block-employees_block-employee_title">{{employee.level}} {{employee.title}}</p>
         <ul class="block-employees_block-employee_block-tags">
           <li class="block-employees_block-employee_block-tags_tag" ng-repeat="skill in employee.skills">{{skill}}</li>
         </ul>
