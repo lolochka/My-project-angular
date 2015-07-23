@@ -14,21 +14,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
 
   $scope.routeParams = $routeParams.employeeId;
 
-  // $scope.getEmployee = function(param) {
-  //   var arr = $scope.employees;
-  //   console.log(param);
-  //   if (arr != undefined) {
-  //     for ( var i = 0; i < arr.length; i++ ) {
-  //       if ( arr[i]._id == param) {
-  //       console.log(arr[i]);
-  //       return arr[i];
-  //       }
-  //     }
-  //   }
-  // };
-
-
-
+  
   console.log($scope.$routeSegment);
   console.log($scope.routeParams);
 
@@ -111,7 +97,11 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', '$routeParams', 'Cache
       $scope.employees.push($scope.newEmployee);
     } else {
       angular.copy($scope.newEmployee, $scope.thisEmployee);
-
+      for (var i = 0; i < $scope.employees.length; i++) {
+        if ( $scope.employees[i]._id == $scope.thisEmployee._id) {
+          $scope.employees[i] = $scope.thisEmployee;
+        }
+      }
     }
     Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
     $scope.newEmployee = {};
@@ -160,7 +150,6 @@ crewControllers.controller('AboutCtrl', ['$scope', function($scope) {
     'third' : 'Hdlkjaflhflaffja'
   }
 }]);
-//сюда можно подключить переменной дата из локал сторедж
 
 
 crewControllers.controller('FaqCtrl', ['$scope', function($scope) {
