@@ -4,9 +4,56 @@
 
 var crewControllers = angular.module('crewControllers', []);
 
-crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', function($scope, Cache ) {
+crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', '$route', '$window', function($scope, Cache, $location, $route, $window ) {
   $scope.employees = Cache.getItems();
-  
+
+  $scope.levels = [
+    {value: 'Junior',
+    name: 'Junior'},
+    {value: 'Middle',
+    name: 'Middle'},
+    {value: 'Senior',
+    name: 'Senior'}
+  ];
+
+  $scope.departments = [
+    {value: 'mobile', 
+    name: 'Mobile'},
+    {value: 'sales', 
+    name: 'Sales'},
+    {value: 'web', 
+    name: 'Web'},
+    {value: 'testing', 
+    name: 'Testing'}
+  ];
+
+  $scope.months = [
+    {value: "0",
+    name: 'January'},
+    {value: "1",
+    name: 'February'},
+    {value: "2",
+    name: 'March'},
+    {value: "3",
+    name: 'April'},
+    {value: "4",
+    name: 'May'},
+    {value: "5",
+    name: 'June'},
+    {value: "6",
+    name: 'July'},
+    {value: "7",
+    name: 'August'},
+    {value: "8",
+    name: 'Septmber'},
+    {value: "9",
+    name: 'October'},
+    {value: "10",
+    name: 'November'},
+    {value: "11",
+    name: 'December'}
+  ];
+
   $scope.getPhoto = function(obj) {
     if (obj.photoUrl != 0 && obj.photoUrl != undefined) {
       return obj.photoUrl;
@@ -64,12 +111,23 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', function($sco
     if (arr != undefined) {
       for ( var i = 0; i < arr.length; i++ ) {
         if ( arr[i]._id == param) {
+          if (i > 0) {
+            var k = i - 1;
+            $location.path("/employees/" + arr[k]._id).replace();
+          } else {
+            $location.path("/employees/").replace();
+          }
           arr.splice(i, 1);
           return arr[i];
         }
       }
     }
   };
+
+    $window.innerHeight;
+    }, function(value) {
+       console.log(value);
+  });
 
   $scope.newEmployee = {};
   
@@ -84,12 +142,16 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', function($sco
     } else {
       angular.copy($scope.newEmployee, $scope.thisEmployee);
       for (var i = 0; i < $scope.employees.length; i++) {
-        if ( $scope.employees[i]._id == $scope.thisEmployee._id) {
-          $scope.employees[i] = $scope.thisEmployee;
+        if ( $scope.employees[i]._id == $scope.newEmployee._id) {
+          $scope.employees[i] = $scope.newEmployee;
         }
       }
     }
+
     Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
+    $location.path("/employees/"+$scope.newEmployee._id).replace();
+    $route.reload(true);
+    console.log($route);
     $scope.newEmployee = {};
     $scope.showme = false;
     return false;
@@ -100,6 +162,8 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', function($sco
     angular.copy(obj, $scope.newEmployee);
     $scope.newEmployee.skills = $scope.newEmployee.skills.join(', ');
   }
+
+  $scope.thisEmployee = {};
 
 }])
 

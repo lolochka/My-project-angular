@@ -65,7 +65,7 @@
       display: block;
    }
   
-  .overlay:target~.block-footer {
+  .block-footer {
    display: none;
 }
    

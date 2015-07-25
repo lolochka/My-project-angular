@@ -124,7 +124,7 @@ a:visited {
 /*HEADER NAV ENDS*/
 
 .block-content {
-   margin: 20px auto 25px;
+   margin: 20px auto 10px;
    overflow: hidden;
    max-width: 1000px;
 }

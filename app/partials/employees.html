@@ -1,5 +1,5 @@
 <div class="right-wrap">
-  <section class="block-emploee-description">
+  <section class="block-emploee-description" data-ng-hide="showDetail">
     <div data-app-view-segment="1" class="employee-details"></div>
   </section>
 </div>
@@ -24,42 +24,17 @@
                 
       <li class="create-emloyee-form_list-field">
         <input type="text" name='empl-title' placeholder="Job position" required data-ng-model="newEmployee.title">
-        <select name='empl-level' id="level" data-ng-model="newEmployee.level">
-          <option value>Choose level</option>
-          <option value="Junior">Junior</option>
-          <option value="Middle">Middle</option>
-          <option value="Senior">Senior</option>
-        </select>
+        <select name='empl-level' id="level" data-ng-model="newEmployee.level" data-ng-options="level.value as level.name for level in levels" data-default-option="Choose level"></select>
       </li>
 
       <li class="create-emloyee-form_list-field">
-        <select name="empl-department" id="department" data-ng-model="newEmployee.department" required>
-          <option value class="null-value">Choose department</option>
-          <option value="mobile">Mobile</option>
-          <option value="sales">Sales</option>
-          <option value="web">Web</option>
-          <option value="testing">Testing</option>
-        </select>
+        <select name="empl-department" id="department" data-ng-model="newEmployee.department" required data-ng-options="department.value as department.name for department in departments" data-default-option="Choose department"></select>
         <input type="text" name="empl-manager" placeholder="Responsible manager" data-ng-model="newEmployee.manager">
       </li>
 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Career start</span> 
-        <select name="empl-month-career-start" data-ng-model="newEmployee.month">
-          <option value>Choose month</option>
-          <option value="0">January</option>
-          <option value="1">February</option>
-          <option value="2">March</option>
-          <option value="3">April</option>
-          <option value="4">May</option>
-          <option value="5">June</option>
-          <option value="6">July</option>
-          <option value="7">August</option>
-          <option value="8">Septmber</option>
-          <option value="9">October</option>
-          <option value="10">November</option>
-          <option value="11">December</option>
-        </select>
+        <select name="empl-month-career-start" data-ng-model="newEmployee.month" data-ng-options="month.value as month.name for month in months" data-default-option="Choose month"></select>
         <input type="text"  name="empl-year-career-start" placeholder="year" pattern="^(19|20)\d\d" data-ng-model="newEmployee.year">
       </li>
                 
@@ -103,7 +78,7 @@
 <button class="block-header_add-employee" data-ng-click="showme=true">Add employee</button>
   
 </div> 
-  <h2 class="block-employees_title">Emloyees</h2>
+  <h2 class="block-employees_title">Emloyees: {{employees.length}}</h2>
   <nav class="block-employees_nav-departments">
     <div class="block-employees-search"><input data-ng-model="query" placeholder="Search. Just start typing..." class="search-feald"></div>
     <ul class="block-employees_nav-departments_list">
@@ -117,9 +92,9 @@
 <!--Employees list header ends --> 
 
 <!--Employees list begins-->
-  <ul class="block-employees_list" data-ng-show="employees">
+  <ul class="block-employees_list" data-ng-show="employees" data-ng-style="resizeWithOffset(305)" resize>
     <li  class="block-employees_block-employee {{employee.department}}" data-ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  data-ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
-      <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
+      <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}" data-ng-click="showDetail = false">
         <div class="photo-block">
           <img data-ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
         </div>
