@@ -4,7 +4,7 @@
 
 var crewControllers = angular.module('crewControllers', []);
 
-crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', '$route', '$window', function($scope, Cache, $location, $route, $window ) {
+crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', '$window', function($scope, Cache, $location, $window ) {
   $scope.employees = Cache.getItems();
 
   $scope.levels = [
@@ -124,34 +124,28 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
     }
   };
 
-    $window.innerHeight;
-    }, function(value) {
-       console.log(value);
-  });
-
   $scope.newEmployee = {};
   
   $scope.addEmployee = function () {
     $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
-    console.log($scope.newEmployee);
     if ($scope.newEmployee._id == undefined) {
       var date = new Date();
       $scope.newEmployee._id = date.getTime();
       $scope.newEmployee.comments = [];
       $scope.employees.push($scope.newEmployee);
+      Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
+      $location.path("/employees/"+$scope.newEmployee._id).replace();
     } else {
       angular.copy($scope.newEmployee, $scope.thisEmployee);
       for (var i = 0; i < $scope.employees.length; i++) {
         if ( $scope.employees[i]._id == $scope.newEmployee._id) {
           $scope.employees[i] = $scope.newEmployee;
+          Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
+          $location.path("/employees/"+$scope.newEmployee._id).replace();
+          $window.location.reload();
         }
       }
     }
-
-    Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
-    $location.path("/employees/"+$scope.newEmployee._id).replace();
-    $route.reload(true);
-    console.log($route);
     $scope.newEmployee = {};
     $scope.showme = false;
     return false;
@@ -169,7 +163,6 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
 
   .controller('EmployeeDataCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
     $scope.routeParams = $routeParams.employeeId;
-    console.log($scope.routeParams);
     // $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
     $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
 

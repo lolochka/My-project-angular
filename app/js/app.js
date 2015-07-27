@@ -40,22 +40,6 @@ crewApp.config(['$routeSegmentProvider', '$routeProvider',
         templateUrl: 'partials/about.html',
       })
 
-      .within()
-        .segment('s1', {
-          default: true,
-          templateUrl: 'partials/about/first.html'
-        })
-
-        .segment('s2', {
-          templateUrl: 'partials/about/second.html'
-        })
-
-        .segment('s3', {
-          templateUrl: 'partials/about/third.html'
-        })
-
-        .up()
-
       .segment('faq', {
         templateUrl: 'partials/faq.html',
         controller: 'FaqCtrl'
@@ -66,18 +50,6 @@ crewApp.config(['$routeSegmentProvider', '$routeProvider',
       })
 
     $routeProvider.otherwise({redirectTo: '/employees'});
-  //   $routeProvider.
-  //     when('/employees', {
-  //       templateUrl: 'partials/employees.html',
-  //       controller: 'EmployeeListCtrl'
-  //     }).
-  //     when('/employees/:employeeId', {
-  //       templateUrl: 'partials/employee-detail.html',
-  //       controller: 'EmployeeListCtrl'
-  //     }).
-      
-  //     otherwise({
-  //       redirectTo: '/employees'
-  //     });
+
   }
 ]);

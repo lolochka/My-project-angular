@@ -18,17 +18,17 @@
     <ul class="create-emloyee-form_list">
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-name' data-ng-model="newEmployee.name" placeholder="Name" required pattern="^[A-Za-z]{2,}">
-        <input type="text" name='empl-surname' data-ng-model="newEmployee.surname" placeholder="Surname" pattern="^[A-Za-z]{2,}" required>
+        <input type="text" name='empl-name' data-ng-model="newEmployee.name" placeholder="Name*" required pattern="^[A-Za-z]{2,}">
+        <input type="text" name='empl-surname' data-ng-model="newEmployee.surname" placeholder="Surname*" pattern="^[A-Za-z]{2,}" required>
       </li>
                 
       <li class="create-emloyee-form_list-field">
-        <input type="text" name='empl-title' placeholder="Job position" required data-ng-model="newEmployee.title">
+        <input type="text" name='empl-title' placeholder="Job position*" required data-ng-model="newEmployee.title">
         <select name='empl-level' id="level" data-ng-model="newEmployee.level" data-ng-options="level.value as level.name for level in levels" data-default-option="Choose level"></select>
       </li>
 
       <li class="create-emloyee-form_list-field">
-        <select name="empl-department" id="department" data-ng-model="newEmployee.department" required data-ng-options="department.value as department.name for department in departments" data-default-option="Choose department"></select>
+        <select name="empl-department" id="department" data-ng-model="newEmployee.department" required data-ng-options="department.value as department.name for department in departments" data-default-option="Choose department*"></select>
         <input type="text" name="empl-manager" placeholder="Responsible manager" data-ng-model="newEmployee.manager">
       </li>
 
@@ -40,7 +40,7 @@
                 
       <li class="create-emloyee-form_list-field">
         <span class="input-label">Primary skills</span>
-        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas" required data-ng-model="newEmployee.skills">
+        <input name="empl-primary-skills" type="text" placeholder="Separate skills by comas*" required data-ng-model="newEmployee.skills">
       </li>
 
       <li class="create-emloyee-form_list-field">
@@ -65,7 +65,7 @@
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label contact-info">Contact information</p>
-        <input name="empl-skype" type="text" placeholder="Skype" required data-ng-model="newEmployee.skype">
+        <input name="empl-skype" type="text" placeholder="Skype" required* data-ng-model="newEmployee.skype">
         <input name="empl-email" type="email" placeholder="E-mail"  data-ng-model="newEmployee.email">
       </li>         
              
@@ -98,7 +98,7 @@
         <div class="photo-block">
           <img data-ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
         </div>
-        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}} {{employee._id}}</h3>
+        <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}}</h3>
         <p class="block-employees_block-employee_title">{{employee.level}} {{employee.title}}</p>
         <ul class="block-employees_block-employee_block-tags"> 
           <li class="block-employees_block-employee_block-tags_tag" data-ng-repeat="skill in employee.skills">{{skill}}</li>

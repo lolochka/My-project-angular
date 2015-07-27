@@ -91,34 +91,39 @@ a:visited {
 	background: #fff;
 }
 
-.block-header_add-employee, .block-header_edit-employee{
-   float: right;
-   height: 30px;
-   box-sizing: border-box;
-   margin-top: 10px;
-   margin-right: 7px;
-   padding: 6px 10px 9px 32px;
-   background-color: #464447;
-   border-radius: 10px;
-   -moz-border-radius: 10px;
-   -webkit-border-radius: 10px;
-   -ms-border-radius: 10px;
-   -o-border-radius: 10px;
-   background-image: url(images/Shape-2.png);
-   background-repeat: no-repeat;
-   background-position: 7px;
-   color: #fff;
-   margin-left: 20px;
-   transition: background-color 0.3s;
-   cursor: pointer;
+.block-header_add-employee, .block-header_edit-employee, .block-header_delete-employee{
+  float: right;
+  height: 30px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-right: 7px;
+  padding: 6px 10px 9px 32px;
+  background-color: #464447;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-image: url(images/icon.png);
+  background-repeat: no-repeat;
+  background-position: 6px -238px;
+  color: #fff;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .block-header_edit-employee{
-   background-image:url(images/Shape-3.png);
-   background-position: 9px 8px;
+   background-image:url(images/icon.png);
+   background-position: 6px -389px;
 }
 
-.block-header_edit-employee:hover, .block-header_edit-employee:active, .block-header_edit-employee:focus, .block-header_add-employee:hover, .block-header_add-employee:active, .block-header_add-employee:focus {
+.block-header_delete-employee{
+   background-image:url(images/icon.png);
+   background-position: 6px -267px;
+}
+
+.block-header_edit-employee:hover, .block-header_edit-employee:active, .block-header_edit-employee:focus, .block-header_add-employee:hover, .block-header_add-employee:active, .block-header_add-employee:focus, .block-header_delete-employee:focus, .block-header_delete-employee:hover, .block-header_delete-employee:active {
    background-color: #2c2b2c;
 }
 /*HEADER NAV ENDS*/
@@ -161,7 +166,7 @@ a:visited {
    height: 20px;
    width: 20px;
    float: right;
-   background: url(images/exit.png) no-repeat 5px 5px;
+   background: url(images/icon.png) no-repeat 5px 5px;
    cursor: pointer;
    height: 22px;
    width: 24px;
@@ -255,16 +260,18 @@ a:visited {
    text-overflow: ellipsis;
    padding-bottom: 5px;
    padding-left: 26px;
-   background: url(images/email131.png) no-repeat;
+   background: url(images/icon.png) no-repeat;
+   background-position: 0px -60px;
 }
 
 .block-emploee-description_block-main-description_block-contacts_skype{
    padding-bottom: 5px;
    padding-left: 26px;
-   background: url(images/skype-icon.png) no-repeat;
+   background: url(images/icon.png) no-repeat;
    max-width: 140px;
    overflow-x: hidden;
    text-overflow: ellipsis;
+   background-position: 0px -332px;
 }
 
 /*CONTACT BLOCK ENDS*/
@@ -318,15 +325,15 @@ a:visited {
 }
 
 .link-link {
-   background: url(images/icon-link.png) no-repeat;
+   background: url(images/icon.png) no-repeat 2px -146px;
 }
 
 .link-linkedin {
-   background: url(images/icon-linkedin.png) no-repeat;
+   background: url(images/icon.png) no-repeat 2px -176px;
 }
 
 .link-behance {
-   background: url(images/icon-behance.png) no-repeat;
+   background: url(images/icon.png) no-repeat 2px -116px;
 }
 
 /*BLOCK DESCRIPTION ENDS*/
@@ -609,8 +616,8 @@ a:visited {
    height: 20px;
    width: 20px;
    float: right;
-   background: url(images/exit.png) no-repeat;
-   background-position: 5px 5px;
+   background: url(images/icon.png) no-repeat;
+   background-position: 7px -85px;
    cursor: pointer;
    height: 22px;
    width: 24px;
@@ -681,7 +688,7 @@ select {
    -ms-appearance: none;
    -o-appearance: none;
    appearance: none;
-   background: url(images/arrow-select.png) no-repeat right;
+   background: url(images/icon.png) no-repeat right -23px;
    margin: 5px 0px 5px;
 }
 
@@ -706,7 +713,6 @@ select[name="empl-level"] {
   width: 140px;
 }
 
-
 input[name="empl-year-career-start"] {
   width: 89px;
 }
@@ -717,9 +723,12 @@ input[name="empl-primary-skills"] {
 
 input[type="url"] {
   width: 100%;
-  background-position: 8px 50%;
   padding-left: 30px;
 } 
+
+input[name="photoUrl"] {
+  background: url(images/icon.png) no-repeat 6px -360px;
+}
 
 input:focus, input.focus {
   box-shadow: 0 0 2px 1px #E0E4CC;
@@ -740,6 +749,10 @@ textarea {
    margin-bottom: 15px;
 }
 
+.ng-invalid-pattern {
+  box-shadow: 0 0 2px 1px #B22222;
+}
+
 .block_buton-create-employee {
    text-align: center;
 }
@@ -756,8 +769,8 @@ button[id="buton-create-employee"], .buton-contact-us {
    box-sizing: border-box;
    color: #fff;
    border-radius: 10px;
-   background: url(images/Shape-6-copy.png) no-repeat #651493;
-   background-position: 10px 50%;
+   background: url(images/icon.png) no-repeat #651493;
+   background-position: 10px -296px;
    cursor: pointer;
    -webkit-transition: background-color 0.3s, color 0.3s;
    -moz-transition: background-color 0.3s, color .3s;
@@ -896,19 +909,19 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
   content: '';
   display: block;
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   float: left;
   margin-right: 10px;
   margin-bottom: 20px;
 }
 
 .contact-us.addres:before {
-  background: url(images/addres.png);
+  background: url(images/icon.png) 0px 0px;
 }
 
 .contact-us.phone:before {
-  background: url(images/phone.png);
+  background: url(images/icon.png) 0px -212px;
 }
 
 .form-contact-us input {
@@ -924,6 +937,10 @@ button[id="buton-create-employee"]:hover, button[id="buton-create-employee"]:act
   width: 100%;
   background-image: url(images/map.png);
   height: 473px;
-  
 }
-/*CONTACT US*/
+
+#map{
+  height:473px; 
+  width:100%;
+}
+/*CONTACT US ENDS*/
