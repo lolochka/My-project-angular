@@ -83,19 +83,13 @@ a:visited {
   background: #fff;
 }
 
-.block-header_add-employee, .block-header_edit-employee, .block-header_delete-employee{
+.button-employee, .button-employee.edit-employee, .button-employee.delete-employee{
   box-sizing: border-box;
   float: right;
   height: 30px;
   margin: 10px 7px 0 10px;
   padding: 6px 10px 9px 32px;
   color: #fff;
-  background: url(images/icon.png) no-repeat 6px -238px #464447;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
   -ms-transition: background-color 0.3s;
@@ -104,38 +98,40 @@ a:visited {
   cursor: pointer;
 }
 
-.block-header_edit-employee{
-   background-image: url(images/icon.png);
-   background-position: 6px -389px;
+.add-employee{
+  background: url(images/icon.png) no-repeat 6px -238px #464447;
 }
 
-.block-header_delete-employee{
-   background-image:url(images/icon.png);
-   background-position: 6px -267px;
+.edit-employee{
+  background: url(images/icon.png) no-repeat 6px -389px #464447;
 }
 
-.block-header_edit-employee:hover, .block-header_edit-employee:active, .block-header_edit-employee:focus, .block-header_add-employee:hover, .block-header_add-employee:active, .block-header_add-employee:focus, .block-header_delete-employee:focus, .block-header_delete-employee:hover, .block-header_delete-employee:active {
-   background-color: #2c2b2c;
+.delete-employee{
+  background: url(images/icon.png) no-repeat 6px -267px #464447;
+}
+
+.button-employee:hover, .button-employee:active, .button-employee:focus {
+  background-color: #2c2b2c;
 }
 /*HEADER NAV ENDS*/
 
 .block-content {
-   margin: 20px auto 10px;
-   overflow: hidden;
-   max-width: 1000px;
+  margin: 20px auto 10px;
+  max-width: 1000px;
+  overflow: hidden;
 }
 
 /*BLOCK DESCRIPTION BEGINS*/
 .right-wrap {
-   float: right;
-   width:100%;
+  float: right;
+  width:100%;
 }
 
 .block-emploee-description {
-   box-sizing: border-box;
-   margin-left: 420px;
-   background-color: #fff;
-   min-height: 200px;
+  box-sizing: border-box;
+  min-height: 200px;
+  margin-left: 420px;
+  background-color: #fff;
 }
 
 
