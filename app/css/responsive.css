@@ -17,7 +17,7 @@
    .block-content {
    margin: 0px auto;
    }
-   
+  
    .right-wrap {
       float: right;
       width:100%;
@@ -82,8 +82,37 @@
 
 
 @media only screen and (max-width:480px) {
-   .block-emploee-description_block-main-description {
-      padding: 10px 15px;
+  .block-header_list-links-ul {
+    display: none;
+    height: 100%;
+  }
+  
+  
+  .label-menu {
+    position: relative;
+    display: block;
+    color: #fff;
+    background-image: url(images/menu.png);
+    width: 32px;
+    height: 32px;
+    top:-10px;
+    float:right;
+  }
+  
+.menu-checkbox:checked ~ .block-header_list-links-ul {
+  display: block;
+  width: 100px;
+}
+  
+.menu-checkbox:checked ~ .block-header_list-links-ul > .block-header_list-links_link {
+  width: 100%;
+  opacity: .8;
+  text-align: right;
+  height: 40px;
+}
+  
+.block-emploee-description_block-main-description {
+  padding: 10px 15px;
 }
    
    

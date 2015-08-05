@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Crew</title>
   <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
   <link href="css/reset.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/responsive.css" rel="stylesheet" type="text/css">
@@ -25,12 +26,16 @@
     <header class="block-header">
       <div class="block-header_block-content">
         <div class="block-header_logo"></div>
-        <ul class="block-header_list-links">
+        <nav class="block-header_list-links">
+          <input class="menu-checkbox" type="checkbox" id="button">
+          <label for="button" class="label-menu" onclick></label>
+          <ul class="block-header_list-links-ul">
           <li class="block-header_list-links_link"><a data-ng-class="{active: ('contact' | routeSegmentStartsWith)}" href="#/contact">Contact us</a></li>
           <li class="block-header_list-links_link"><a href="#/faq" data-ng-class="{active: ('faq' | routeSegmentStartsWith)}">FAQ</a></li>
           <li class="block-header_list-links_link"><a href="#/about" data-ng-class="{active: ('about' | routeSegmentStartsWith)}">About</a></li>
           <li class="block-header_list-links_link"><a href="#/employees" data-ng-class="{active: ('employees' | routeSegmentStartsWith)}">Home</a></li>
         </ul>
+        </nav>
       </div>
       <div class="wrapper"></div>
     </header>
