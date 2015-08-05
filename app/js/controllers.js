@@ -161,7 +161,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
 
 }])
 
-  .controller('EmployeeDataCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', function($scope, $routeParams, Cache, $routeSegment) {
+  .controller('EmployeeDataCtrl', ['$scope', '$routeParams', 'Cache', '$routeSegment', '$location', function($scope, $routeParams, Cache, $routeSegment, $location) {
     $scope.routeParams = $routeParams.employeeId;
     // $scope.thisEmployee = $scope.getEmployee($scope.routeParams);
     $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
@@ -188,6 +188,12 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
       }
       Cache.cacheItem($scope.thisEmployee._id, $scope.thisEmployee);
     };
+    
+    $scope.showDetails = "show";
+    
+    $scope.hideDetails = function() {
+      $location.path("/employees/").replace();
+    }
   }]);
 
 

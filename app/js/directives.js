@@ -31,7 +31,7 @@ crewApp.directive('resize', function ($window) {
             scope.resizeWithOffset = function (offsetH) {
                 scope.$eval(attr.notifier);
                 return { 
-                    'maxHeight': (newValue.h - offsetH) + 'px'                    
+                    'maxHeight': (newValue.h - offsetH) + 'px'
                 };
             };
 

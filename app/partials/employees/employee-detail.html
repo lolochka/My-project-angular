@@ -1,6 +1,7 @@
-{{thisEmployee.id}}
+<section class="block-emploee-description" ng-class="showDetails">
+<div class="employee-details">
 <header class="block-emploee-description_header">
-	<div class="block-emploee-description_header_close" data-ng-click="showDetail=true"></div>
+	<div class="block-emploee-description_header_close" ng-click="hideDetails()"></div>
 	<div class="button-employee delete-employee" data-ng-click="deleteEmployee(routeParams)">Delete
 	</div>
 	<div class="button-employee edit-employee" data-ng-click="editEmployee(thisEmployee)">Edit
@@ -75,3 +76,5 @@
   </div>
 <!--Comments block ends-->
 </div>
+</div>
+</section>
