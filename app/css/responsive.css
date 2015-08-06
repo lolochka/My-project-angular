@@ -78,6 +78,26 @@
    button {
       height: 44px;
    }
+  
+  select {
+    background: url(images/icon.png) no-repeat right -19px;
+  }
+  
+  input[name="photoUrl"] {
+    background: url(images/icon.png) no-repeat 6px -353px;
+  }
+  
+  input[type="url"].link-linkedin {
+    background: url(images/icon.png) no-repeat 2px -170px;
+  }
+  
+  input[type="url"].link-behance {
+    background: url(images/icon.png) no-repeat 2px -110px;
+  }
+  
+  input[type="url"].link-link {
+    background: url(images/icon.png) no-repeat 2px -140px;
+  }
 }
 
 

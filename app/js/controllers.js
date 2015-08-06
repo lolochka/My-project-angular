@@ -4,66 +4,66 @@
 
 var crewControllers = angular.module('crewControllers', []);
 
-crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', '$window', function($scope, Cache, $location, $window ) {
+crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', '$window', function ($scope, Cache, $location, $window) {
   $scope.employees = Cache.getItems();
 
   $scope.levels = [
     {value: 'Junior',
-    name: 'Junior'},
+      name: 'Junior'},
     {value: 'Middle',
-    name: 'Middle'},
+      name: 'Middle'},
     {value: 'Senior',
-    name: 'Senior'}
+      name: 'Senior'}
   ];
 
   $scope.departments = [
-    {value: 'mobile', 
-    name: 'Mobile'},
-    {value: 'sales', 
-    name: 'Sales'},
-    {value: 'web', 
-    name: 'Web'},
-    {value: 'testing', 
-    name: 'Testing'}
+    {value: 'mobile',
+      name: 'Mobile'},
+    {value: 'sales',
+      name: 'Sales'},
+    {value: 'web',
+      name: 'Web'},
+    {value: 'testing',
+      name: 'Testing'}
   ];
 
   $scope.months = [
     {value: "0",
-    name: 'January'},
+      name: 'January'},
     {value: "1",
-    name: 'February'},
+      name: 'February'},
     {value: "2",
-    name: 'March'},
+      name: 'March'},
     {value: "3",
-    name: 'April'},
+      name: 'April'},
     {value: "4",
-    name: 'May'},
+      name: 'May'},
     {value: "5",
-    name: 'June'},
+      name: 'June'},
     {value: "6",
-    name: 'July'},
+      name: 'July'},
     {value: "7",
-    name: 'August'},
+      name: 'August'},
     {value: "8",
-    name: 'Septmber'},
+      name: 'Septmber'},
     {value: "9",
-    name: 'October'},
+      name: 'October'},
     {value: "10",
-    name: 'November'},
+      name: 'November'},
     {value: "11",
-    name: 'December'}
+      name: 'December'}
   ];
 
-  $scope.getPhoto = function(obj) {
-    if (obj.photoUrl != 0 && obj.photoUrl != undefined) {
+  $scope.getPhoto = function (obj) {
+    if (obj.photoUrl !== 0 && obj.photoUrl !== undefined) {
       return obj.photoUrl;
     } else {
       return 'img/user.png';
     }
   };
 
-  $scope.getExperience = function(obj) {
-    if (obj.year != undefined, obj.month != undefined, obj.year != 0 || obj.month != 0 ) {
+  $scope.getExperience = function (obj) {
+    if ((obj.year !== undefined && obj.month !== undefined) && (obj.year !== 0 || obj.month !== 0)) {
       var month = obj.month;
       var year = obj.year;
       var date = new Date();
@@ -71,20 +71,20 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
       var nowYear = date.getFullYear();
       var diffMonth;////need compile
       var diffYear;
-      month == 0 ? diffMonth = 0 : diffMonth = nowMonth - month;
-      year == 0 ? diffYear = 0 : diffYear = nowYear - year;
+      month === 0 ? diffMonth = 0 : diffMonth = nowMonth - month;
+      year === 0 ? diffYear = 0 : diffYear = nowYear - year;
       if (diffMonth > 0) {
         if (diffYear > 0) {
           return diffYear + ' year(s) and ' + diffMonth + ' month(s)';
-        } else if (diffYear == 0) {
+        } else if (diffYear === 0) {
           return diffMonth + ' month(s)';
         } else {
           return 'Have not started yet';
         }
-      } else if (diffMonth == 0) {
+      } else if (diffMonth === 0) {
         if (diffYear > 0) {
           return diffYear + ' year(s)';
-        } else if (diffYear == 0) {
+        } else if (diffYear === 0) {
           return 'Do not have any experience';
         } else {
           return 'Have not started yet';
@@ -103,13 +103,13 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
     } else {
       return false;
     }
-  }
+  };
 
-  $scope.deleteEmployee = function(param) {
+  $scope.deleteEmployee = function (param) {
     Cache.removeItem(param);
     var arr = $scope.employees;
-    if (arr != undefined) {
-      for ( var i = 0; i < arr.length; i++ ) {
+    if (arr !== undefined) {
+      for (var i = 0; i < arr.length; i++ ) {
         if ( arr[i]._id == param) {
           if (i > 0) {
             var k = i - 1;

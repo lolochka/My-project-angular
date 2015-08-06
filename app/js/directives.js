@@ -1,11 +1,11 @@
 'use strict';
 
 /* Directives */
-crewApp.directive('select', function($interpolate) {
+crewApp.directive('select', function ($interpolate) {
   return {
     restrict: 'E',
     require: 'ngModel',
-    link: function(scope, elem, attrs, ctrl) {
+    link: function (scope, elem, attrs, ctrl) {
       var defaultOptionTemplate;
       scope.defaultOptionText = attrs.defaultOption || 'Select...';
       defaultOptionTemplate = '<option value="" disabled selected style="display: none;">{{defaultOptionText}}</option>';
@@ -15,30 +15,28 @@ crewApp.directive('select', function($interpolate) {
 });
 
 crewApp.directive('resize', function ($window) {
-    return function (scope, element, attr) {
+  return function (scope, element, attr) {
 
-        var w = angular.element($window);
-        scope.$watch(function () {
-            return {
-                'h': window.innerHeight, 
-                'w': window.innerWidth
-            };
-        }, function (newValue, oldValue) {
-            console.log(newValue, oldValue);
-            scope.windowHeight = newValue.h;
-            scope.windowWidth = newValue.w;
+    var w = angular.element($window);
+    scope.$watch(function () {
+      return {
+        'h': window.innerHeight,
+        'w': window.innerWidth
+      };
+    }, function (newValue, oldValue) {
+      scope.windowHeight = newValue.h;
+      scope.windowWidth = newValue.w;
 
-            scope.resizeWithOffset = function (offsetH) {
-                scope.$eval(attr.notifier);
-                return { 
-                    'maxHeight': (newValue.h - offsetH) + 'px'
-                };
-            };
+      scope.resizeWithOffset = function (offsetH) {
+        scope.$eval(attr.notifier);
+        return {
+          'maxHeight': (newValue.h - offsetH) + 'px'
+        };
+      };
+    }, true);
 
-        }, true);
-
-        w.bind('resize', function () {
-            scope.$apply();
+    w.bind('resize', function () {
+      scope.$apply();
     });
-  }
+  };
 });

@@ -9,7 +9,7 @@
 <div class="overlay" data-ng-show="showme" data-ng-click="showme=false"></div>
 <section class="block-create-employee" data-ng-show="showme">
   <div class="heading-create-employee_close" data-ng-click="showme=false"></div>
-  <h1 class="heading-create-employee">Employee</h1>
+  <h2 class="heading-create-employee">Employee</h2>
         
   <form id="create-emloyee-form" name="create-employee" class="create-emloyee-form" data-ng-submit="addEmployee()">
     <ul class="create-emloyee-form_list">
@@ -60,7 +60,7 @@
                 
       <li  class="create-emloyee-form_list-field">
         <p class="input-label contact-info">Contact information</p>
-        <input name="empl-skype" type="text" placeholder="Skype*" required* data-ng-model="newEmployee.skype">
+        <input name="empl-skype" type="text" placeholder="Skype*" required data-ng-model="newEmployee.skype">
         <input name="empl-email" type="email" placeholder="E-mail" data-ng-model="newEmployee.email">
       </li>         
              
@@ -72,7 +72,6 @@
     
 <button class="button-employee add-employee" data-ng-click="showme=true">Add employee</button>
   
-</div> 
   <h2 class="block-employees_title">Emloyees: {{employees.length}}</h2>
   <nav class="block-employees_nav-departments">
     <div class="block-employees-search"><input data-ng-model="query" placeholder="Search. Just start typing..." class="search-feald"></div>
@@ -87,7 +86,7 @@
 <!--Employees list header ends --> 
 
 <!--Employees list begins-->
-  <ul class="block-employees_list" data-ng-show="employees" data-ng-style="resizeWithOffset(305)" resize>
+  <ul class="block-employees_list" data-ng-show="employees" data-ng-style="resizeWithOffset(305)" data-resize>
     <li  class="block-employees_block-employee {{employee.department}}" data-ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  data-ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
