@@ -10,9 +10,6 @@ crewApp.config(['$routeSegmentProvider', '$routeProvider',
       .when('/employees',               'employees')
       .when('/employees/:employeeId',   'employees.employeeDetail')
       .when('/about',                   'about')
-      .when('/about/first',             'about.s1')
-      .when('/about/second',            'about.s2')
-      .when('/about/third',             'about.s3')
       .when('/faq',                     'faq')
       .when('/contact',                 'contact')
 
