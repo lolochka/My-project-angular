@@ -6,6 +6,8 @@ body {
   color: #2e2e2e;
   background: url(images/bg-texture-pave1.png);
   font: 400 14px / 17.996px Noto Sans, sans-serif;
+  overflow: auto;
+  position: relative;
 }
 .wrapper {
   clear: both; 
@@ -28,6 +30,8 @@ a:visited {
 /*HEADER NAV BEGINS*/
 .block-header {
   background-color: #7421a4;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .block-header_block-content{
