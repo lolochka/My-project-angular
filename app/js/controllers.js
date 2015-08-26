@@ -56,32 +56,13 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
       name: 'December'}
   ];
 
-  $scope.getPhoto = function (obj) {
-    if (obj.photoUrl !== 0 && obj.photoUrl !== undefined) {
-      return obj.photoUrl;
-    } else {
-      return 'img/user.png';
-    }
-  };
+  $scope.photo = Employee.getPhoto;
+  console.log($scope.photo);
 
   
   $scope.deleteEmployee = function (param) {
     Cache.removeItem(param);
-    var arr = $scope.employees;
-    if (arr !== undefined) {
-      for (var i = 0; i < arr.length; i++ ) {
-        if ( arr[i]._id == param) {
-          if (i > 0) {
-            var k = i - 1;
-            $location.path("/employees/" + arr[k]._id).replace();
-          } else {
-            $location.path("/employees/").replace();
-          }
-          arr.splice(i, 1);
-          return arr[i];
-        }
-      }
-    }
+    $scope.employees = Employee.delete (param, $scope.employees);
   };
   
   $scope.addEmployee = function () {

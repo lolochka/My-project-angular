@@ -90,7 +90,7 @@
     <li  class="block-employees_block-employee {{employee.department}}" data-ng-repeat="employee in employees | filter:query | filter:myFilter track by employee._id"  data-ng-class="{active: ('employees' | routeSegmentStartsWith) && ('employeeId' | routeSegmentParam) == employee._id}">
       <a class="block-employees_block-employee_link" href="#/employees/{{employee._id}}">
         <div class="photo-block">
-          <img data-ng-src="{{getPhoto(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
+          <img data-ng-src="{{photo(employee)}}" width="59" alt="{{employee.name}} {{employee.surname}} photo">
         </div>
         <h3 class="block-employees_block-employee_name">{{employee.name}} {{employee.surname}}</h3>
         <p class="block-employees_block-employee_title">{{employee.level}} {{employee.title}}</p>

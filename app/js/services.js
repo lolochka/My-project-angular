@@ -48,7 +48,7 @@ crewServices.factory('Cache', ['$resource', function() {
     return cache_service;
 }]);
 
-crewServices.factory('Employee', ['$resource', function() {
+crewServices.factory('Employee', ['$location', function($location) {
     var employee_service = {};
       
     employee_service.getExperience = function(obj) {
@@ -94,6 +94,34 @@ crewServices.factory('Employee', ['$resource', function() {
       }
     };
   
+  employee_service.getPhoto = function (obj) {
+    if (obj.photoUrl !== 0 && obj.photoUrl !== undefined) {
+      return obj.photoUrl;
+    } else {
+      return 'img/user.png';
+    }
+  };
   
-    return employee_service;
+  employee_service.delete = function (key, arr) {
+    if (arr !== undefined) {
+      for (var i = 0; i < arr.length; i++ ) {
+        if ( arr[i]._id == key) {
+          if (i > 0) {
+            var k = i - 1;
+            $location.path("/employees/" + arr[k]._id).replace();
+          } else {
+            $location.path("/employees/").replace();
+          }
+          arr.splice(i, 1);
+          return arr;
+        }
+      }
+    }
+  };
+  
+  employee_service.add = function (obj) {
+    
+  }
+  
+  return employee_service;
 }]);
