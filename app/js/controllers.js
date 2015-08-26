@@ -57,7 +57,6 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
   ];
 
   $scope.photo = Employee.getPhoto;
-  console.log($scope.photo);
 
   
   $scope.deleteEmployee = function (param) {
@@ -65,29 +64,9 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
     $scope.employees = Employee.delete (param, $scope.employees);
   };
   
-  $scope.addEmployee = function () {
+  $scope.addEmployee = function() {
     $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
-    if ($scope.newEmployee._id == undefined) {
-      var date = new Date();
-      $scope.newEmployee._id = date.getTime();
-      $scope.newEmployee.comments = [];
-      $scope.employees.push($scope.newEmployee);
-      Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
-      $location.path("/employees/"+$scope.newEmployee._id).replace();
-    } else {
-      angular.copy($scope.newEmployee, $scope.thisEmployee);
-      for (var i = 0; i < $scope.employees.length; i++) {
-        if ( $scope.employees[i]._id == $scope.newEmployee._id) {
-          $scope.employees[i] = $scope.newEmployee;
-          Cache.cacheItem($scope.newEmployee._id, $scope.newEmployee);
-          $location.path("/employees/"+$scope.newEmployee._id).replace();
-          $window.location.reload();
-        }
-      }
-    }
-    $scope.newEmployee = {};
-    $scope.showme = false;
-    return false;
+    Employee.add($scope.newEmployee, $scope.employees, $scope.showme);
   }
 
   $scope.editEmployee = function (obj) {
@@ -104,8 +83,6 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
     $scope.thisEmployee = Cache.getItem($routeParams.employeeId);
     
     $scope.experience = Employee.getExperience;
-    console.log($scope.experience);
-    console.log($scope.thisEmployee);
 
     $scope.newComment = {};
     $scope.addComment = function(obj) {

@@ -48,7 +48,7 @@ crewServices.factory('Cache', ['$resource', function() {
     return cache_service;
 }]);
 
-crewServices.factory('Employee', ['$location', function($location) {
+crewServices.factory('Employee', ['$location', 'Cache', function($location, Cache) {
     var employee_service = {};
       
     employee_service.getExperience = function(obj) {
@@ -103,6 +103,7 @@ crewServices.factory('Employee', ['$location', function($location) {
   };
   
   employee_service.delete = function (key, arr) {
+    Cache.removeItem(key);
     if (arr !== undefined) {
       for (var i = 0; i < arr.length; i++ ) {
         if ( arr[i]._id == key) {
@@ -118,10 +119,37 @@ crewServices.factory('Employee', ['$location', function($location) {
       }
     }
   };
-  
-  employee_service.add = function (obj) {
-    
+
+  employee_service.add = function (obj, arr, show) {
+    if (obj._id == undefined) {
+      employee_service.addNew(obj, arr);
+    } else {
+      employee_service.edit(obj, arr);
+    }
+    obj = {};
+    show = false;
+    return false;
   }
+  
+  employee_service.addNew = function (obj, arr) {
+    var date = new Date();
+    obj._id = date.getTime();
+    obj.comments = [];
+    arr.push(obj);
+    Cache.cacheItem(obj._id, obj);
+    $location.path("/employees/"+obj._id).replace();
+  };
+
+  employee_service.edit = function (obj, arr) {
+    for (var i = 0; i < arr.length; i++) {
+      if ( arr[i]._id == obj._id) {
+        arr[i] = obj;
+      }
+    }
+    Cache.cacheItem(obj._id, obj);
+    $location.path("/employees/"+obj._id).replace();
+    $window.location.reload();
+  };
   
   return employee_service;
 }]);
