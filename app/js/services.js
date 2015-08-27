@@ -148,6 +148,28 @@ crewServices.factory('Employee', ['$location', 'Cache', '$window', function($loc
     $location.path("/employees/"+obj._id).replace();
     $window.location.reload();
   };
+
+  employee_service.addTxt = function (obj, txt) {
+    if (txt.text) {
+      var date = new Date();
+      txt.date = date;
+      txt.username = 'User';
+      txt._id = date.getTime();
+      var newComment = txt;
+      obj.comments.push(newComment);
+      Cache.cacheItem(obj._id, obj);
+      return txt;
+    }
+  }
+
+  employee_service.removeTxt = function (obj, txt) {
+    for (var i = 0, ii = obj.comments.length; i < ii; i++) {
+      if (txt === obj.comments[i]) {
+        obj.comments.splice(i, 1);
+      };
+    }
+    Cache.cacheItem(obj._id, obj);
+  }
   
   return employee_service;
 }]);

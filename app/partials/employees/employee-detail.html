@@ -57,7 +57,7 @@
   	<h4 class="block-emploee-description_block-comments_title">Comments ({{thisEmployee.comments.length}}):</h4>
   	<div id="all-comments">
   		<div class="block-emploee-description_block-comments_comment" data-ng-repeat="comment in thisEmployee.comments track by comment._id">
-	  		<div class="block-emploee-description_block-comments_remove-comment" data-ng-click="removeComment(comment)">x</div>
+	  		<div class="block-emploee-description_block-comments_remove-comment" data-ng-click="removeComment(thisEmployee, comment)">x</div>
 	  		<p class="block-emploee-description_block-comments_author">{{comment.username}}</p>
 	  		<p class="block-emploee-description_block-comments_comment-time">
 	  			<time datetime="{{comment.date}}">{{comment.date | date:'yyyy-MM-dd HH:mm'}}</time>
@@ -70,7 +70,7 @@
   	<div class="block-emploee-description_block-comments_form" id="comment-form">
   		<textarea name="comment" class="block-emploee-description_block-comments_form" placeholder="Insert your comment here" data-ng-model="newComment.text"></textarea>
   		<div class="block-emploee-description_block-comments_form_button-block">
-  			<button class="block-emploee-description_block-comments_form_button" data-ng-click="addComment(thisEmployee)">Submit</button>
+  			<button class="block-emploee-description_block-comments_form_button" data-ng-click="addComment(thisEmployee, newComment)">Submit</button>
   		</div>
   	</div>
   </div>
