@@ -48,7 +48,7 @@ crewServices.factory('Cache', ['$resource', function() {
     return cache_service;
 }]);
 
-crewServices.factory('Employee', ['$location', 'Cache', function($location, Cache) {
+crewServices.factory('Employee', ['$location', 'Cache', '$window', function($location, Cache, $window) {
     var employee_service = {};
       
     employee_service.getExperience = function(obj) {
