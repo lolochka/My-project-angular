@@ -120,15 +120,13 @@ crewServices.factory('Employee', ['$location', 'Cache', '$window', function($loc
     }
   };
 
-  employee_service.add = function (obj, arr, show) {
+  employee_service.add = function (obj, arr) {
     if (obj._id == undefined) {
       employee_service.addNew(obj, arr);
     } else {
       employee_service.edit(obj, arr);
     }
     obj = {};
-    show = false;
-    return false;
   }
   
   employee_service.addNew = function (obj, arr) {
