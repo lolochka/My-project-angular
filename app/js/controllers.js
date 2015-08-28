@@ -29,6 +29,7 @@ crewControllers.controller('EmployeeListCtrl', ['$scope', 'Cache', '$location', 
   $scope.addEmployee = function() {
     $scope.newEmployee.skills = $scope.newEmployee.skills.split(", ");
     Employee.add($scope.newEmployee, $scope.employees);
+    $scope.newEmployee = {};
     $scope.showme = false;
     return false;
   };

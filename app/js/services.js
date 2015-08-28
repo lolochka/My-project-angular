@@ -126,7 +126,6 @@ crewServices.factory('Employee', ['$location', 'Cache', '$window', function($loc
     } else {
       employee_service.edit(obj, arr);
     }
-    obj = {};
   }
   
   employee_service.addNew = function (obj, arr) {
